@@ -1,0 +1,59 @@
+<html>
+
+  <head>
+
+    
+<link rel="stylesheet" href="css.css">
+
+    <script type="text/javascript">
+      
+      var arrayWithElements = new Array(),replaytimer;
+      
+      function replay(i) {
+          clearTimeout(replaytimer);        
+          if (!arrayWithElements.length)
+              return;
+          if (i > 0)
+              document.getElementsByTagName (arrayWithElements[i-1].tag)[arrayWithElements [i - 1].index].style.border="none";
+          document.getElementsByTagName(arrayWithElements[i].tag)[arrayWithElements[i].index].style.border="2px dotted firebrick";
+          if (arrayWithElements.length > i + 1)
+              replaytimer = setTimeout(function(){replay(i+1);}, 1000)
+          else (arrayWithElements.length > i + 1)
+              replaytimer = setTimeout(function(){document.getElementsByTagName(arrayWithElements[i].tag)[arrayWithElements[i].index].style.border="none";},1000)
+      }
+      
+      function clickListener(e) {   
+          var clickedElement=(window.event)
+              ? window.event.srcElement
+              : e.target,
+              tags = document.getElementsByTagName (clickedElement.tagName);
+          
+          for (var i = 0; i < tags.length; ++i) {
+              if (tags [i] == clickedElement) {
+                  arrayWithElements.push ({tag:clickedElement.tagName,index:i}); 
+              }
+          }
+      }
+
+      document.onclick = clickListener;
+
+  </script>
+
+  </head>
+  
+  <body>
+
+    <b>click</b>
+    <div>click<b>click</b>click</div>
+    <b>click</b>
+    
+    <input type="button" value="replay"  onclick="replay(0)">
+    <script type="text/javascript">  
+        
+    </script>  
+
+    <button type="button" class="button"> Gwen </button>
+  </body>
+
+
+</html>
