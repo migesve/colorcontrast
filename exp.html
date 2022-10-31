@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>APP</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script type="text/javascript">
+      
+        let mots = ['Tableau', 'Maladie','Acceder','Haricot','Tension','Pendule','Parasol',
+                    'Unanime','Courant','Autiste'];
+        let jaune = '#dddd00';
+        let bleu = '#00ffff';
+
+        let grisC = '#888888';
+        let grisF = '#b1b1b1';
+        //let grisCC = '#333333';
+        let couleurs = [jaune,bleu,grisC,grisF];
+        
+        function arrayShuffle(a) {
+          var l = a.length, t, r;
+          while (0 !== l) {
+            r = Math.floor(Math.random() * l);
+            l -= 1;
+            t = a[l];
+            a[l] = a[r];
+            a[r] = t;
+          }
+          return a;
+        }
+        function entierAleatoire(min, max)
+          {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+          }
+        
+    </script>
+  </head>
+  <body>
+    <h1>Expérience de recherche d'information visuelle</h1>
+    <div>
+      <script LANGUAGE="Javascript">
+        NewMots = arrayShuffle(mots);
+        CoulMots = [couleurs[0],couleurs[1]]
+        CoulFond = [couleurs[2],couleurs[3]]
+        
+        for (let pas = 0; pas < 10; pas++) {
+            document.write("<input class ='bouton' style='color:"+CoulMots[entierAleatoire(0,1)] +"; background-color:" + CoulFond[entierAleatoire(0,1)]+";' type='button' id='"+pas+"' value='"+NewMots[pas]+"'/>");
+          }
+    //
+      </script>
+    </div>
+
+    <div>
+      <button type="button"><a class="start-retour" href="index.html"> Retour </a></button>
+    </div>
+    
+  </body>
+</html>
