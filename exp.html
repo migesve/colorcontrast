@@ -37,23 +37,27 @@
     </script>
   </head>
   <body>
-    <h1>Expérience de recherche d'information visuelle</h1>
-    <div>
+    <h3>Expérience de recherche d'information visuelle</h3>  <!-- <a href="index.html" class="close"></a> -->
+    
+    <div class="content">
       <script LANGUAGE="Javascript">
         NewMots = arrayShuffle(mots);
         CoulMots = [couleurs[0],couleurs[1]]
         CoulFond = [couleurs[2],couleurs[3]]
         
         for (let pas = 0; pas < 10; pas++) {
-            document.write("<input class ='bouton' style='color:"+CoulMots[entierAleatoire(0,1)] +"; background-color:" + CoulFond[entierAleatoire(0,1)]+";' type='button' id='"+pas+"' value='"+NewMots[pas]+"'/>");
+            document.write("<input class ='bouton' style='font-size: 13px; width: 120px; text-align: center; color: "+CoulMots[entierAleatoire(0,1)] +"; background-color:" + CoulFond[entierAleatoire(0,1)]+";' type='button' id='"+pas+"' value='"+NewMots[pas]+"'/>");
           }
     //
       </script>
     </div>
 
-    <div>
+    <!-- je pense que le bouton retour fait du bruit, on devrait faire façon de après 10, 20, x essais la page retour? 
+    ou peut etre un bouton rouge avec un X pour laisser l'option a finir l'expe -->
+
+    <!-- <div>
       <button type="button"><a class="start-retour" href="index.html"> Retour </a></button>
-    </div>
+    </div> -->
     
   </body>
 </html>
