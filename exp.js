@@ -43,14 +43,14 @@ function clickListener(e) {
             console.log(tags)
         }
     }
-    
+
     NewMots = arrayShuffle(mots);
 
     for(let i = 0; i < 10; i++){
         document.getElementById(i).style.backgroundColor = CoulFond[entierAleatoire(0,1)];
         document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
         document.getElementById(i).value = NewMots[i];
-        document.getElementById("motATrouver").innerHTML = NewMots[0];
+        document.getElementById("motATrouver").textContent = NewMots[0];
     }
 }
 
