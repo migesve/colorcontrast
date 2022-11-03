@@ -35,7 +35,6 @@ function clickListener(e) {
         ? window.event.target
         : e.target,
         tags = document.getElementsByTagName (clickedElement.tagName);
-        //ids = document.getElementById()
     
     for (var i = 0; i < tags.length; ++i) {
         if (tags [i] == clickedElement) {
