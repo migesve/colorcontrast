@@ -42,4 +42,5 @@ function clickListener(e) {
             console.log({tag:clickedElement.tagName,index:i})
         }
     }
+    
 }
