@@ -32,15 +32,20 @@ CoulFond = [couleurs[2],couleurs[3]]
 
 function clickListener(e) {   
     var clickedElement=(window.event)
-        ? window.event.srcElement
+        ? window.event.target
         : e.target,
         tags = document.getElementsByTagName (clickedElement.tagName);
+        //ids = document.getElementById()
     
     for (var i = 0; i < tags.length; ++i) {
         if (tags [i] == clickedElement) {
             //arrayWithElements.push ({tag:clickedElement.tagName,index:i}); 
             console.log({tag:clickedElement.tagName,index:i})
+            console.log(tags)
         }
     }
-    
+}
+
+function clickedId(clickedId){
+    console.log(clickedId)
 }
