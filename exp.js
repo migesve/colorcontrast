@@ -29,3 +29,17 @@ function entierAleatoire(min, max){
 NewMots = arrayShuffle(mots);
 CoulMots = [couleurs[0],couleurs[1]]
 CoulFond = [couleurs[2],couleurs[3]]
+
+function clickListener(e) {   
+    var clickedElement=(window.event)
+        ? window.event.srcElement
+        : e.target,
+        tags = document.getElementsByTagName (clickedElement.tagName);
+    
+    for (var i = 0; i < tags.length; ++i) {
+        if (tags [i] == clickedElement) {
+            //arrayWithElements.push ({tag:clickedElement.tagName,index:i}); 
+            console.log({tag:clickedElement.tagName,index:i})
+        }
+    }
+}
