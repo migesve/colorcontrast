@@ -56,4 +56,5 @@ function clickListener(e) {
 
 function clickedId(clickedId){
     console.log(clickedId)
+    document.write("<a href=instruction.html></a>")
 }
