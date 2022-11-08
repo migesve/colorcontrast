@@ -79,13 +79,16 @@ input{
     transform: rotate(-45deg);
   }
 
-  .btn.btn-green {
-    --tw-bg-opacity: 1;
-    --tw-text-opacity: 1;
-    background-color: rgb(22 163 74/var(--tw-bg-opacity));
-    border-radius: .25rem;
-    color: rgb(255 255 255/var(--tw-text-opacity));
-    display: inline-block;
-    padding: .5rem 1.25rem;
-    text-decoration-line: none;
-  }
+.bt.gc-j{
+  border: none;
+  border-radius: .25rem;
+  color: #dddd00; /*#dd0;*/
+  background-color: #888888;
+  padding : 1rem 10px ;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size:13px; 
+  width: 100px;
+}

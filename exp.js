@@ -1,4 +1,4 @@
-console.log('Hello world')
+console.log('=========================')
 
 let mots = ['Tableau', 'Maladie','Acceder','Haricot','Tension','Pendule','Parasol','Unanime','Courant','Autiste'];
 let jaune = '#dddd00';
@@ -9,6 +9,7 @@ let grisF = '#b1b1b1'; // 1.71 avec bleu, 4 avec bleu2 et 1.47 avec jaune
 let gris3 = ''; // bfbfbf?
 //let grisCC = '#333333';
 let couleurs = [jaune,bleu,grisC,grisF];
+
         
 function arrayShuffle(a) {
     var l = a.length, t, r;
@@ -56,5 +57,5 @@ function clickListener(e) {
 
 function clickedId(clickedId){
     console.log(clickedId)
-    document.write("<a href=instruction.html></a>")
+    
 }

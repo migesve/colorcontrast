@@ -4,36 +4,7 @@
     <meta charset="utf-8">
     <title>Instruction</title>
     <link rel="stylesheet" href="style.css">
-
-    <script type="text/javascript">
-      
-        let mots = ['Tableau', 'Maladie','Acceder','Haricot','Tension','Pendule','Parasol',
-                    'Unanime','Courant','Autiste'];
-        let jaune = '#dddd00';
-        let bleu = '#00ffff';
-
-        let grisC = '#888888';
-        let grisF = '#b1b1b1';
-        //let grisCC = '#333333';
-        let couleurs = [jaune,bleu,grisC,grisF];
-        
-        function arrayShuffle(a) {
-          var l = a.length, t, r;
-          while (0 !== l) {
-            r = Math.floor(Math.random() * l);
-            l -= 1;
-            t = a[l];
-            a[l] = a[r];
-            a[r] = t;
-          }
-          return a;
-        }
-        function entierAleatoire(min, max)
-          {
-          return Math.floor(Math.random() * (max - min + 1)) + min;
-          }
-        
-    </script>
+    <script src="exp.js"></script>
   </head>
   <body>
     <h1>Expérience de recherche d'information visuelle</h1>
@@ -41,10 +12,11 @@
         <script LANGUAGE="Javascript">
             liste = arrayShuffle(mots);
             document.write("Vous devez chercher le mot "+ liste[entierAleatoire(0,9)] +".");
+            
         </script>
     </br>
     </div>
-
+  </br>
     <div>
       <button type="button"><a class="start-retour" href="exp.html"> Go </a></button>
     </div>

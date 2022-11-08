@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>APP</title>
+    <title>EXP</title>
     <link rel="stylesheet" href="style.css">
     <script src="exp.js"></script>
 
@@ -13,24 +13,27 @@
     <div class="content">
       <script>
 
-        document.write("Trouvez le mot: <h2 id='motATrouver'>" + mots[entierAleatoire(0,9)] + "</h2>")
-        console.log(NewMots)
-        for (let pas = 0; pas < 10; pas++) {
+        document.write("Trouvez le mot: <h2 id='motATrouver'>" + mots[entierAleatoire(0,9)] + "</h2>") // si on enleve et changer href='exp.html' par href='instruction.html' 
+        
+          for (let pas = 0; pas < 10; pas++) {
           
           /*document.write("<input class ='bouton' onClick='clickedId(instruction.html)' style=' color: " +
           CoulMots[entierAleatoire(0,1)] + "; background-color:" + CoulFond[entierAleatoire(0,1)] +
           ";' type='button' id='" + pas + "' value='" + NewMots[pas] + "'/>");*/
-          document.write("<a href='instruction.html' class='btn btn-green' itemprop='url'>"+NewMots[pas]+"</a>")
+          document.write("<a href='exp.html' class='bt gc-j' itemprop='url'>"+NewMots[pas]+"</a>")
+          
         }
-        
+       
         document.onclick = clickListener;
+
+       // }
+
+        
 
         
       </script>
     </div>
-    <a href="instruction.html" target="_blank" class="btn btn-green" itemprop="url">
-      Essayez-vous-même!
-    </a>
+  
 
     <!-- je pense que le bouton retour fait du bruit, on devrait faire façon de après 10, 20, x essais la page retour? 
     ou peut etre un bouton rouge avec un X pour laisser l'option a finir l'expe -->
