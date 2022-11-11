@@ -42,6 +42,10 @@ function clickListener(e) {
             //arrayWithElements.push ({tag:clickedElement.tagName,index:i}); 
             console.log({tag:clickedElement.tagName,index:i})
             console.log(tags)
+
+            let time = Date.now();
+
+            savedata ({tag:clickedElement.tagName,index:i,time});
         }
     }
 
@@ -52,11 +56,28 @@ function clickListener(e) {
         document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
         document.getElementById(i).value = NewMots[i];
         document.getElementById("motATrouver").textContent = NewMots[0];
+
+
     }
 }
 
 function clickedId(clickedId){
-    savedata ({clickedId:Date.now});
-    console.log(clickedId)
+    console.log(clickedId);
     
+}
+
+function savedata (data) {
+
+    // Creating a XHR object
+    let xhr = new XMLHttpRequest();
+    let url = "savedata.php";
+
+    // open a connection
+    xhr.open ("POST", url, true);
+
+    // Set the request header i.e. which type of content you are sending
+    xhr.setRequestHeader ("Content-Type", "application/json");
+
+    // Sending data with the request
+    xhr.send (JSON.stringify (data));
 }
