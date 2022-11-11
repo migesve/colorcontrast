@@ -56,6 +56,7 @@ function clickListener(e) {
 }
 
 function clickedId(clickedId){
+    savedata ({clickedId:Date.now});
     console.log(clickedId)
     
 }
