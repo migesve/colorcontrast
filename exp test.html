@@ -17,15 +17,13 @@
         
         for (let pas = 0; pas < 10; pas++) {
         
-        document.write("<input class ='bouton' onClick='clickedId(instruction.html)' style=' color: " +
-        CoulMots[entierAleatoire(0,1)] + "; background-color:" + CoulFond[entierAleatoire(0,1)] +
-        ";' type='button' id='" + pas + "' value='" + NewMots[pas] + "'/>");
+          document.write("<input class ='"+ tabrep[0] +"' onClick='clickListener()' type='button' id='" + pas + "' value='" + NewMots[pas] + "'/>");
         
-        //document.write("<a href='exp test.html' class='bt gc-j' itemprop='url'>"+NewMots[pas]+"</a>")
+          //document.write("<a href='exp test.html' class='bt gc-j' itemprop='url'>"+NewMots[pas]+"</a>")
           
         }
        
-        document.onclick = clickListener;
+        //document.onclick = clickListener;
 
        // }
 

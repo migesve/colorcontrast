@@ -28,10 +28,16 @@ function entierAleatoire(min, max){
 }
 
 NewMots = arrayShuffle(mots);
-CoulMots = [couleurs[0],couleurs[1]]
-CoulFond = [couleurs[2],couleurs[3]]
+CoulMots = [couleurs[0],couleurs[1]];
+CoulFond = [couleurs[2],couleurs[3]];
+tabrep = ['bt gc-j','bt gc-b','bt gf-j','bt gf-b'];
+tabrep = arrayShuffle(tabrep);
+let counterMots = 0;
 
-function clickListener(e) {   
+function clickListener(e) {  
+    
+
+    //console.log(counterMots);
     var clickedElement=(window.event)
         ? window.event.target
         : e.target,
@@ -50,15 +56,21 @@ function clickListener(e) {
     }
 
     NewMots = arrayShuffle(mots);
-    
+
     for(let i = 0; i < 10; i++){
-        document.getElementById(i).style.backgroundColor = CoulFond[entierAleatoire(0,1)];
-        document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
+        //document.getElementById(i).style.backgroundColor = CoulFond[entierAleatoire(0,1)];
+        //document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
         document.getElementById(i).value = NewMots[i];
         document.getElementById("motATrouver").textContent = NewMots[entierAleatoire(0,9)];
+        document.getElementById(i).className = tabrep[counterMots+1];
+
+
+        
 
 
     }
+    
+    counterMots++;
 }
 
 function clickedId(clickedId){
