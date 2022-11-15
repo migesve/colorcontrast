@@ -1,4 +1,4 @@
-console.log('Hello world')
+console.log('=========================')
 
 let mots = ['Tableau', 'Maladie','Acceder','Haricot','Tension','Pendule','Parasol','Unanime','Courant','Autiste'];
 let jaune = '#dddd00';
@@ -9,6 +9,7 @@ let grisF = '#b1b1b1'; // 1.71 avec bleu, 4 avec bleu2 et 1.47 avec jaune
 let gris3 = ''; // bfbfbf?
 //let grisCC = '#333333';
 let couleurs = [jaune,bleu,grisC,grisF];
+
         
 function arrayShuffle(a) {
     var l = a.length, t, r;
@@ -41,6 +42,10 @@ function clickListener(e) {
             //arrayWithElements.push ({tag:clickedElement.tagName,index:i}); 
             console.log({tag:clickedElement.tagName,index:i})
             console.log(tags)
+
+            let time = Date.now();
+
+            savedata ({tag:clickedElement.tagName,index:i,time});
         }
     }
 
@@ -51,9 +56,28 @@ function clickListener(e) {
         document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
         document.getElementById(i).value = NewMots[i];
         document.getElementById("motATrouver").textContent = NewMots[0];
+
+
     }
 }
 
 function clickedId(clickedId){
-    console.log(clickedId)
+    console.log(clickedId);
+    
+}
+
+function savedata (data) {
+
+    // Creating a XHR object
+    let xhr = new XMLHttpRequest();
+    let url = "savedata.php";
+
+    // open a connection
+    xhr.open ("POST", url, true);
+
+    // Set the request header i.e. which type of content you are sending
+    xhr.setRequestHeader ("Content-Type", "application/json");
+
+    // Sending data with the request
+    xhr.send (JSON.stringify (data));
 }

@@ -78,3 +78,17 @@ input{
   .close:after {
     transform: rotate(-45deg);
   }
+
+.bt.gc-j{
+  border: none;
+  border-radius: .25rem;
+  color: #dddd00; /*#dd0;*/
+  background-color: #888888;
+  padding : 1rem 10px ;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size:13px; 
+  width: 100px;
+}
