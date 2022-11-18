@@ -16,7 +16,7 @@ tabrep = ['bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j',
 //document.write(tabrep.length)
 tabrep = arrayShuffle(tabrep);
 let counterMots = 0;
-let headdata = ["Mot a trouver","index","Mot cliqué","date"]; //dans quel ordre son les données : si index = 12 btn Go sinon mot rechercher
+let headdata = ["Mot a trouver","index","Mot cliqué","date",,"classe"]; //dans quel ordre son les données : si index = 12 btn Go sinon mot rechercher
 let data =[];
 
 function arrayShuffle(a) {
@@ -35,25 +35,6 @@ function entierAleatoire(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
-function enregistrerexp(){
-    var clickedElement=(window.event)
-    ? window.event.target
-    : e.target,
-    tags = document.getElementsByTagName (clickedElement.tagName);
-
-    for (let k =0; k<80;k++){
-        let xp = [];
-        let time=Date.now();
-        let wordFind =  document.getElementById("motATrouver").textContent;
-        let wordClic = document.getElementsByTagName(clickedElement.tagName).textContent;
-        let ind =  document.getElementsByTagName(clickedElement.tagName)
-        xp=["Atrouver: "+wordFind,"clique: "+wordClic,"index: "+ind,"temps: "+time]
-        data[k]=xp
-    }
-    
-}
-
 function clickListener(e) {  
     
 
@@ -62,20 +43,23 @@ function clickListener(e) {
         ? window.event.target
         : e.target,
         tags = document.getElementsByTagName (clickedElement.tagName);
-    
+        
+        console.log({motATrouver:document.getElementById("motATrouver").textContent,id:clickedElement.id,MotClicke:clickedElement.value,style:clickedElement.className})
+/*
     for (var i = 0; i < tags.length; ++i) {
         if (tags [i] == clickedElement) {
             //arrayWithElements.push ({tag:clickedElement.tagName,index:i}); 
-            //console.log({tag:clickedElement.tagName,index:i})
-            //console.log(tags)
-            
-            let time = Date.now();
-            
-            //savedata ({tag:clickedElement.tagName,index:i,time});
 
+
+            // on a pas besoin let index = document.querySelectorAll('input[value="' + document.getElementById("motATrouver").textContent + '"]');
+            //console.log(tags)
+            //let time = Date.now();
+           
+            //savedata ({tag:clickedElement.tagName,index:i,time});
+          
         }
     }
-    enregistrerexp()
+*/
 
     NewMots = arrayShuffle(mots);
     document.getElementById(11).value = Math.trunc((counterMots+1)/2)+"/40";
@@ -117,4 +101,34 @@ function savedata (data) {
     // Sending data with the request
     xhr.send (JSON.stringify (data));
 }
-console.log(data)
+
+
+/*
+NewMots = arrayShuffle(mots);
+document.getElementById(11).value = Math.trunc((counterMots+1))+"/40";
+//if (counterMots% 2 == 0){
+    if(clickedElement.value == "go"){
+        document.getElementById(i).value = NewMots[i];
+        document.getElementById("motATrouver").textContent = NewMots[entierAleatoire(0,9)];
+        console.log("hola");
+
+    }else{
+    for(let i = 0; i < 10; i++){
+        //document.getElementById(i).style.backgroundColor = CoulFond[entierAleatoire(0,1)];
+        //document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
+        document.getElementById(i).className = tabrep[(counterMots)+1];
+        document.getElementById("motATrouver").textContent = "hola";
+
+
+        counterMots++;
+        
+    }
+}
+//}
+
+
+if (counterMots >= 40){
+    document.write("<p class=''> L'expérience est fini, merci de votre participation  </p>")
+}
+}
+*/
