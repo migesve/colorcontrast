@@ -71,6 +71,8 @@ tabrep = arrayShuffle(tabrep);
 let counterMots = 0;
 let headdata = ["Mot a trouver", "index", "Mot cliqué", "date", , "classe"]; //dans quel ordre son les données : si index = 12 btn Go sinon mot rechercher
 let data = [];
+let start = 0;
+let millis = 0;
 
 function arrayShuffle(a) {
   var l = a.length,
@@ -98,6 +100,7 @@ function clickListener(e) {
   NewMots = arrayShuffle(mots);
   //if (counterMots% 2 == 0){
   if (clickedElement.value == "Go") {
+    start = Date.now();
     motATrouver = NewMots[entierAleatoire(0, 9)];
     for (let i = 0; i < 10; i++) {
       document.getElementById(i).value = NewMots[i];
@@ -119,6 +122,8 @@ function clickListener(e) {
       document.getElementById(i).style.visibility = "hidden";
     }
 
+    millis = Date.now() - start;
+
     // ce qu'on cherche garder dans le JSON
     console.log({
       essai: counterMots,
@@ -126,7 +131,17 @@ function clickListener(e) {
       id: clickedElement.id,
       MotClicke: clickedElement.value,
       style: clickedElement.className,
+      timeElapsedSeconds: millis / 1000,
     });
+
+    data.push(
+      counterMots,
+      document.getElementById("motATrouver").textContent,
+      clickedElement.id,
+      clickedElement.value,
+      clickedElement.className,
+      millis / 1000
+    );
 
     counterMots++;
 
@@ -136,8 +151,11 @@ function clickListener(e) {
   //}
 
   if (counterMots >= 40) {
+    document.getElementById(12).style.visibility = "hidden";
     document.getElementById("texte1").textContent =
       "L'expérience est fini, merci de votre participation";
+
+    savedata(data);
   }
 }
 
