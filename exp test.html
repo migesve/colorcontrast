@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>EXP</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="exp.js"></script>
-
   </head>
   <body>
-    <h3>Expérience de recherche d'information visuelle</h3>  <!-- <a href="index.html" class="close"></a> -->
-    <div class ="nb_etape">
-      <script>
-        document.write("<input id='11' value ='' />");
-      </script>
-        <input class ='go_btn' onClick='clickListener()' type='button' id='12' value='Go'/>
-    </div>
+    <h3>Expérience de recherche d'information visuelle</h3>
+    <!-- <a href="index.html" class="close"></a> -->
     <div class="content">
       <script>
-        
-        document.write("Trouvez le mot: <h2 id='motATrouver'>" + NewMots[entierAleatoire(0,9)] + "</h2>") // si on enleve et changer href='exp.html' par href='instruction.html' 
-        
-        
+        document.write("<input id='11' readonly='readonly' value ='0/40' />");
+      </script>
+      <br />
+      <input
+        class="go_btn"
+        onClick="clickListener()"
+        type="button"
+        id="12"
+        value="Go"
+      />
+      <!--
+    </div>
+    <div class="content">
+    -->
+      <p id="texte1" visibility="hidden">Trouvez le mot:</p>
+      <script>
+        document.getElementById("texte1").textContent =
+          "Clickez sur le button XXXX pour demarrer l'experience";
+      </script>
+      <h2 id="motATrouver"></h2>
+      <script>
         for (let pas = 0; pas < 10; pas++) {
-        
-          document.write("<input class ='"+ tabrep[0] +"' onClick='clickListener()' type='button' id='" + pas + "' value='" + NewMots[pas] + "'/>");
-        
-          //document.write("<a href='exp test.html' class='bt gc-j' itemprop='url'>"+NewMots[pas]+"</a>")
-          
-        }
-       
-        //document.onclick = clickListener;   
+          document.write(
+            "<input class ='" +
+              tabrep[0] +
+              "' onClick='clickListener()' type='button' id='" +
+              pas +
+              "' value='' />"
+          );
 
-        
+          document.getElementById(pas).style.visibility = "hidden";
+        }
       </script>
     </div>
-  
-
-    <!-- je pense que le bouton retour fait du bruit, on devrait faire façon de après 10, 20, x essais la page retour? 
-    ou peut etre un bouton rouge avec un X pour laisser l'option a finir l'expe -->
-
-    <!-- <div>
-      <button type="button"><a class="start-retour" href="index.html"> Retour </a></button>
-    </div> -->
-    
   </body>
 </html>
