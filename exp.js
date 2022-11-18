@@ -30,7 +30,7 @@ function entierAleatoire(min, max){
 NewMots = arrayShuffle(mots);
 CoulMots = [couleurs[0],couleurs[1]];
 CoulFond = [couleurs[2],couleurs[3]];
-tabrep = ['bt gc-j','bt gc-b','bt gf-j','bt gf-b'];
+tabrep = ['bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b'];
 tabrep = arrayShuffle(tabrep);
 let counterMots = 0;
 
