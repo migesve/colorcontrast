@@ -9,8 +9,16 @@ let grisF = '#b1b1b1'; // 1.71 avec bleu, 4 avec bleu2 et 1.47 avec jaune
 let gris3 = ''; // bfbfbf?
 //let grisCC = '#333333';
 let couleurs = [jaune,bleu,grisC,grisF];
+NewMots = arrayShuffle(mots);
+CoulMots = [couleurs[0],couleurs[1]];
+CoulFond = [couleurs[2],couleurs[3]];
+tabrep = ['bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b'];
+//document.write(tabrep.length)
+tabrep = arrayShuffle(tabrep);
+let counterMots = 0;
+let headdata = ["Mot a trouver","index","Mot cliqué","date",,"classe"]; //dans quel ordre son les données : si index = 12 btn Go sinon mot rechercher
+let data =[];
 
-        
 function arrayShuffle(a) {
     var l = a.length, t, r;
     while (0 !== l) {
@@ -27,13 +35,6 @@ function entierAleatoire(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-NewMots = arrayShuffle(mots);
-CoulMots = [couleurs[0],couleurs[1]];
-CoulFond = [couleurs[2],couleurs[3]];
-tabrep = ['bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b','bt gc-j','bt gc-b','bt gf-j','bt gf-b'];
-tabrep = arrayShuffle(tabrep);
-let counterMots = 0;
-
 function clickListener(e) {  
     
 
@@ -42,32 +43,41 @@ function clickListener(e) {
         ? window.event.target
         : e.target,
         tags = document.getElementsByTagName (clickedElement.tagName);
-    
+        
+        console.log({motATrouver:document.getElementById("motATrouver").textContent,id:clickedElement.id,MotClicke:clickedElement.value,style:clickedElement.className})
+/*
     for (var i = 0; i < tags.length; ++i) {
         if (tags [i] == clickedElement) {
             //arrayWithElements.push ({tag:clickedElement.tagName,index:i}); 
-            console.log({tag:clickedElement.tagName,index:i})
-            console.log(tags)
 
-            let time = Date.now();
 
-            savedata ({tag:clickedElement.tagName,index:i,time});
+            // on a pas besoin let index = document.querySelectorAll('input[value="' + document.getElementById("motATrouver").textContent + '"]');
+            //console.log(tags)
+            //let time = Date.now();
+           
+            //savedata ({tag:clickedElement.tagName,index:i,time});
+          
         }
     }
+*/
 
     NewMots = arrayShuffle(mots);
-
-    for(let i = 0; i < 10; i++){
-        //document.getElementById(i).style.backgroundColor = CoulFond[entierAleatoire(0,1)];
-        //document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
-        document.getElementById(i).value = NewMots[i];
-        document.getElementById("motATrouver").textContent = NewMots[entierAleatoire(0,9)];
-        document.getElementById(i).className = tabrep[counterMots+1];
-
-
-        
-
-
+    document.getElementById(11).value = Math.trunc((counterMots+1)/2)+"/40";
+    if (counterMots% 2 == 0){
+        for(let i = 0; i < 10; i++){
+            //document.getElementById(i).style.backgroundColor = CoulFond[entierAleatoire(0,1)];
+            //document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
+            document.getElementById(i).value = NewMots[i];
+            document.getElementById("motATrouver").textContent = NewMots[entierAleatoire(0,9)];
+            document.getElementById(i).className = tabrep[(counterMots/2)+1];
+            
+        }
+    }
+   
+    
+    counterMots++;
+    if (counterMots >= 80){
+        document.write("<p class=''> L'expérience est fini, merci de votre participation  </p>")
     }
     
     counterMots++;
@@ -93,3 +103,34 @@ function savedata (data) {
     // Sending data with the request
     xhr.send (JSON.stringify (data));
 }
+
+
+/*
+NewMots = arrayShuffle(mots);
+document.getElementById(11).value = Math.trunc((counterMots+1))+"/40";
+//if (counterMots% 2 == 0){
+    if(clickedElement.value == "go"){
+        document.getElementById(i).value = NewMots[i];
+        document.getElementById("motATrouver").textContent = NewMots[entierAleatoire(0,9)];
+        console.log("hola");
+
+    }else{
+    for(let i = 0; i < 10; i++){
+        //document.getElementById(i).style.backgroundColor = CoulFond[entierAleatoire(0,1)];
+        //document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
+        document.getElementById(i).className = tabrep[(counterMots)+1];
+        document.getElementById("motATrouver").textContent = "hola";
+
+
+        counterMots++;
+        
+    }
+}
+//}
+
+
+if (counterMots >= 40){
+    document.write("<p class=''> L'expérience est fini, merci de votre participation  </p>")
+}
+}
+*/

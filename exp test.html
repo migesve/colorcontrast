@@ -9,11 +9,17 @@
   </head>
   <body>
     <h3>Expérience de recherche d'information visuelle</h3>  <!-- <a href="index.html" class="close"></a> -->
-    
+    <div class ="nb_etape">
+      <script>
+        document.write("<input id='11' value ='' />");
+      </script>
+        <input class ='go_btn' onClick='clickListener()' type='button' id='12' value='Go'/>
+    </div>
     <div class="content">
       <script>
-
+        
         document.write("Trouvez le mot: <h2 id='motATrouver'>" + NewMots[entierAleatoire(0,9)] + "</h2>") // si on enleve et changer href='exp.html' par href='instruction.html' 
+        
         
         for (let pas = 0; pas < 10; pas++) {
         
@@ -23,11 +29,7 @@
           
         }
        
-        //document.onclick = clickListener;
-
-       // }
-
-        
+        //document.onclick = clickListener;   
 
         
       </script>
