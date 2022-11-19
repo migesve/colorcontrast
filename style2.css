@@ -95,7 +95,7 @@ input{
   .bt.gc-j{
     border: none;
     border-radius: .25rem;
-    color: #dddd00; /*#dd0;*/
+    color: #777700; /*#dd0;*/
     background-color: #888888;
     padding : 1rem 10px ;
     margin: 5px;
@@ -108,7 +108,7 @@ input{
   .bt.gc-b{
     border: none;
     border-radius: .25rem;
-    color: #0000ff; /*#dd0;*/
+    color: #0000ee; /*#dd0;*/
     background-color: #888888;
     padding : 1rem 10px ;
     margin: 5px;
@@ -122,7 +122,7 @@ input{
   .bt.gf-j{
     border: none;
     border-radius: .25rem;
-    color: #dddd00; /*#dd0;*/
+    color: #777700; /*#dd0;*/
     background-color: #333333;
     padding : 1rem 10px ;
     margin: 5px;
@@ -135,7 +135,7 @@ input{
   .bt.gf-b{
     border: none;
     border-radius: .25rem;
-    color: #00f; /*#dd0;*/
+    color: #0000ee; /*#dd0;*/
     background-color: #333333;
     padding : 1rem 10px ;
     margin: 5px;
