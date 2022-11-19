@@ -20,6 +20,9 @@ p{
   margin-right: auto;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+p.body{
+  text-align: justify;
+}
 
 h2{
     margin-bottom: 50px;
