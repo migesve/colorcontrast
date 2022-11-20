@@ -153,7 +153,7 @@ function clickListener(e) {
   if (counterMots >= 40) {
     document.getElementById(12).style.visibility = "hidden";
     document.getElementById("texte1").textContent =
-      "L'expérience est fini, merci de votre participation";
+      "<p>L'expérience est fini, merci de votre participation</p>";
 
     savedata(data);
   }
