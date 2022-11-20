@@ -13,6 +13,7 @@ let mots = [
   "Autiste",
 ];
 let motATrouver;
+/* 
 let jaune = "#dddd00";
 let bleu = "#0000ff";
 
@@ -21,9 +22,12 @@ let grisF = "#b1b1b1"; // 1.71 avec bleu, 4 avec bleu2 et 1.47 avec jaune
 let gris3 = ""; // bfbfbf?
 //let grisCC = '#333333';
 let couleurs = [jaune, bleu, grisC, grisF];
+*/
 NewMots = arrayShuffle(mots);
+/*
 CoulMots = [couleurs[0], couleurs[1]];
 CoulFond = [couleurs[2], couleurs[3]];
+*/
 tabrep = [
   "bt gc-j",
   "bt gc-b",
