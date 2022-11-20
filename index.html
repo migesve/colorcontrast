@@ -7,7 +7,7 @@
   </head>
 
   <body>
-    <h2>Expérience de recherche d'information visuelle</h2>
+    <h2>Expérience de recherche d'information visuelle.</h2>
 
     <p class="body">
       Bonjour, nous sommes deux étudiants du parcours Informatique et Cognition
@@ -42,10 +42,111 @@
     </p>
 
     <p class="body">
-      Veuillez cocher cette case pour accepter de participer à notre expérience.
-      Nous vous garantissons l'anonymat total quant aux résultats que vous allez
-      fournir.
+      Nous vous garantissons l'anonymat total quant aux résultats que vous allez fournir,
+      si vous voulez savoir le resultat de notre expérience, laissez nous votre email.
+
+      Un fois l'expérience est fini on effacera tous vos données.
     </p>
+
+    <div class="rendered-form">
+      <div class="formbuilder-text form-group field-nomPrenom">
+        <label for="nomPrenom" class="formbuilder-text-label"
+          >Nom et Prenom</label
+        >
+        <br>
+        <input
+          type="text"
+          class="form"
+          name="nomPrenom"
+          access="false"
+          id="nomPrenom"
+        />
+      </div>
+      <div class="formbuilder-text form-group field-email">
+        <label for="email" class="formbuilder-text-label">Email</label>
+        <br>
+        <input
+          type="email"
+          class="form"
+          name="email"
+          access="false"
+          id="email"
+        />
+      </div>
+      <div class="formbuilder-date form-group field-naiss">
+        <label for="naiss" class="formbuilder-date-label"
+          >Date de naissance</label
+        >
+        <br>
+        <input
+          type="date"
+          class="naiss"
+          name="naiss"
+          access="false"
+          id="naiss"
+        />
+      </div>
+      <div class="formbuilder-radio-group form-group field-Sexe">
+        <label for="Sexe" class="formbuilder-radio-group-label">Genre</label>
+        <div class="radio-group">
+          <div class="formbuilder-radio">
+            <input
+              name="Sexe"
+              access="false"
+              id="Sexe-0"
+              value="masculin"
+              type="radio"
+            />
+            <label for="Sexe-0">Masculin</label>
+          </div>
+          <div class="formbuilder-radio">
+            <input
+              name="Sexe"
+              access="false"
+              id="Sexe-1"
+              value="feminin"
+              type="radio"
+            />
+            <label for="Sexe-1">Féminin</label>
+          </div>
+          <div class="formbuilder-radio">
+            <input
+              name="Sexe"
+              access="false"
+              id="Sexe-2"
+              value="autre"
+              type="radio"
+            />
+            <label for="Sexe-2">Autre</label>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div
+        class="formbuilder-checkbox-group form-group field-checkbox-group-1668934829476"
+      >
+        <label
+          for="checkbox-group-1668934829476"
+          class="formbuilder-checkbox-group-label"
+          >Veuillez cocher cette case pour accepter de participer à notre expérience.
+          <span class="formbuilder-required">*</span></label
+        >
+        <div class="checkbox-group">
+          <div class="formbuilder-checkbox">
+            <input
+              name="checkbox-group-1668934829476[]"
+              access="false"
+              id="checkbox-group-1668934829476-0"
+              aria-required="true"
+              value="accept"
+              type="checkbox"
+              checked="checked"
+            />
+            <label for="checkbox-group-1668934829476-0">Accepter</label>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- mettre checkbox pour accepter collection données, age, sexe pour debloquer le bouton -->
     <input
