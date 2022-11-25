@@ -116,6 +116,9 @@ function clickListener(e) {
       (Date.now() - new Date(document.getElementById("naiss").value)) /
       31557600000;
     if (age < 18) {
+      if (document.getElementById("plus18")){
+        break id1;
+      }
       let g = document.createElement("div");
       let plus18 = document.createTextNode(
         "Vous devez avoir plus de 18 ans pour participer à cette expérience"
