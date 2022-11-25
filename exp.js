@@ -103,7 +103,7 @@ function clickListener(e) {
 
   NewMots = arrayShuffle(mots);
   //if (counterMots% 2 == 0){
-  if (clickedElement.value == "Start") {
+  id1: if (clickedElement.value == "Start") {
     // pour changer l'ordre des elements dans la page, deprecated since we can delete them with the next while
 
     // divIntro = document.getElementsByClassName("intro")[0];
@@ -111,6 +111,47 @@ function clickListener(e) {
     // container = divIntro.parentNode;
     // container.appendChild(divContent);
     // container.appendChild(divIntro);
+
+    var age =
+      (Date.now() - new Date(document.getElementById("naiss").value)) /
+      31557600000;
+    if (age < 18) {
+      let g = document.createElement("div");
+      let plus18 = document.createTextNode(
+        "Vous devez avoir plus de 18 ans pour participer à cette expérience"
+      );
+      g.appendChild(plus18);
+
+      g.id = "plus18";
+
+      document
+        .getElementById("naiss")
+        .parentNode.insertBefore(g, document.getElementById("naiss"));
+
+      document.getElementById("plus18").style.color = "red";
+      break id1;
+    }
+
+    if (document.getElementById("checkbox").checked == false) {
+      document.getElementsByClassName(
+        "formbuilder-checkbox-group-label"
+      )[0].textContent =
+        "S'il vous plaît cocher cette case pour accepter de participer à notre expérience.";
+      document.getElementsByClassName(
+        "formbuilder-checkbox-group-label"
+      )[0].style.color = "red";
+      break id1;
+    }
+
+    data.push(
+      document.getElementById("nomPrenom").value,
+      document.getElementById("email").value,
+      document.getElementById("naiss").value,
+      document.getElementById("Sexe-0").checked,
+      document.getElementById("Sexe-1").checked,
+      document.getElementById("Sexe-2").checked,
+      document.getElementById("checkbox").value
+    );
 
     let element = document.getElementById("intro");
     while (element.firstChild) {
