@@ -186,7 +186,7 @@ function clickListener(e) {
     //document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
     document.getElementById("motATrouver").style.visibility = "hidden";
     document.getElementById("texte1").textContent =
-      "Clickez sur le button XXXXX";
+      "Clickez sur le button Go pour continuer";
     document.getElementById(12).disabled = false;
     for (let i = 0; i < 10; i++) {
       document.getElementById(i).style.visibility = "hidden";
@@ -223,7 +223,7 @@ function clickListener(e) {
   if (counterMots >= 40) {
     document.getElementById(12).style.visibility = "hidden";
     document.getElementById("texte1").textContent =
-      "<p> L'expérience est fini, merci de votre participation </p>";
+      "L'expérience est fini, merci de votre participation";
 
     savedata(data);
   }
