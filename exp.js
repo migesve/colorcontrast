@@ -104,7 +104,6 @@ function clickListener(e) {
   NewMots = arrayShuffle(mots);
   //if (counterMots% 2 == 0){
   if (clickedElement.value == "Start") {
-
     // pour changer l'ordre des elements dans la page, deprecated since we can delete them with the next while
 
     // divIntro = document.getElementsByClassName("intro")[0];
@@ -119,9 +118,13 @@ function clickListener(e) {
     }
 
     //divIntro = document.getElementsByClassName("intro")[0].style.visibility = "hidden";
+
+    // test visible
     divContent = document.getElementsByClassName(
       "content"
     )[0].style.visibility = "visible";
+
+    //creer le test avec document.write???
   } else if (clickedElement.value == "Go") {
     start = Date.now();
     motATrouver = NewMots[entierAleatoire(0, 9)];
