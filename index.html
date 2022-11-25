@@ -48,121 +48,96 @@
       toutes vos données.
     </p>
     <form id="form">
-      <div class="rendered-form">
-        <div class="formbuilder-text form-group field-nomPrenom">
-          <label for="nomPrenom" class="formbuilder-text-label"
-            >Nom et Prenom</label
-          >
-          <br />
-          <input
-            type="text"
-            class="form"
-            name="nomPrenom"
-            access="false"
-            id="nomPrenom"
-          />
-        </div>
-        <div class="formbuilder-text form-group field-email">
-          <label for="email" class="formbuilder-text-label">Email</label>
-          <br />
-          <input
-            type="email"
-            class="form"
-            name="email"
-            access="false"
-            id="email"
-          />
-        </div>
-        <div class="formbuilder-date form-group field-naiss">
-          <label for="naiss" class="formbuilder-date-label"
-            >Date de naissance</label
-          >
-          <br />
-          <input
-            type="date"
-            class="naiss"
-            name="naiss"
-            access="false"
-            id="naiss"
-          />
-        </div>
-        <div class="formbuilder-radio-group form-group field-Sexe">
-          <label for="Sexe" class="formbuilder-radio-group-label">Genre</label>
-          <div class="radio-group">
-            <div class="formbuilder-radio">
-              <input
-                name="Sexe"
-                access="false"
-                id="Sexe-0"
-                value="masculin"
-                type="radio"
-              />
-              <label for="Sexe-0">Masculin</label>
-            </div>
-            <div class="formbuilder-radio">
-              <input
-                name="Sexe"
-                access="false"
-                id="Sexe-1"
-                value="feminin"
-                type="radio"
-              />
-              <label for="Sexe-1">Féminin</label>
-            </div>
-            <div class="formbuilder-radio">
-              <input
-                name="Sexe"
-                access="false"
-                id="Sexe-2"
-                value="autre"
-                type="radio"
-              />
-              <label for="Sexe-2">Autre</label>
-            </div>
-          </div>
-        </div>
-        <br />
-        <div
-          class="formbuilder-checkbox-group form-group field-checkbox-group-1668934829476"
-        >
-          <label
-            for="checkbox-group-1668934829476"
-            class="formbuilder-checkbox-group-label"
-            >Veuillez cocher cette case pour accepter de participer à notre
-            expérience. <span class="formbuilder-required">*</span></label
-          >
-          <div class="checkbox-group">
-            <div class="formbuilder-checkbox">
-              <input
-                name="checkbox-group-1668934829476[]"
-                access="false"
-                id="checkbox-group-1668934829476-0"
-                aria-required="true"
-                value="accept"
-                type="checkbox"
-              />
-              <label for="checkbox-group-1668934829476-0">Accepter</label>
-            </div>
-          </div>
-          <input class="start-retour" type="submit" onClick="clickListener()" value="Start" />
-        </div>
-      </div>
+      <label for="nomPrenom" class="form-text-label">Nom et Prenom</label>
+      <br />
+      <input
+        type="text"
+        class="form"
+        name="nomPrenom"
+        access="false"
+        id="nomPrenom"
+      />
+      <br />
+      <label for="email" class="form-text-label">Email</label>
+      <br />
+      <input type="email" class="form" name="email" access="false" id="email" />
+      <br />
+      <label for="naiss" class="form-date-label">Date de naissance</label>
+      <br />
+      <input type="date" class="naiss" name="naiss" access="false" id="naiss" />
+      <br />
+      <label for="Sexe" class="form-radio-group-label">Genre</label>
+      <br />
+      <input
+        name="Sexe"
+        access="false"
+        id="Sexe-0"
+        value="masculin"
+        type="radio"
+      />
+      <label for="Sexe-0">Masculin</label>
+      <input
+        name="Sexe"
+        access="false"
+        id="Sexe-1"
+        value="feminin"
+        type="radio"
+      />
+      <label for="Sexe-1">Féminin</label>
+      <input
+        name="Sexe"
+        access="false"
+        id="Sexe-2"
+        value="autre"
+        type="radio"
+      />
+      <label for="Sexe-2">Autre</label>
+      <br />
+      <label for="checkbox-group" class="formbuilder-checkbox-group-label"
+        >Veuillez cocher cette case pour accepter de participer à notre
+        expérience. <span class="formbuilder-required">*</span></label
+      >
+      <br />
+      <input
+        name="checkbox-group"
+        access="false"
+        id="checkbox-group"
+        aria-required="true"
+        value="accept"
+        type="checkbox"
+      />
+      <label for="checkbox-group">Accepter</label>
+      <br />
+      <br />
+      <input class="start-retour" type="submit" value="Start" />
     </form>
     <script>
+      var requestURL = "data.json";
+      var request = new XMLHttpRequest();
+      request.open("GET", requestURL);
+      request.responseType = "json";
+      request.send();
+      request.onload = function () {
+        var users = request.response;
+      };
+
       var form = document.querySelector("form");
       let nom = document.querySelector("form");
-      let email = document.querySelector("email");
+      let email = document.querySelector("form");
 
-      // Add 'submit' event handler
+      const loginDetails = {
+        nom: nom.value,
+        email: email.value,
+      };
+
+
       form.addEventListener("submit", () => {
-        let userInfo = {
-          nom: login.value,
-          email: password.value,
-        };
-        // Put the object into storage
-        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        window.localStorage.setItem("user", JSON.stringify(loginDetails));
+
         window.location.href = "exptest.html";
-        console.log(localStorage.userInfo)
+        window.location.replace("exptest.html");
+
+        console.log(localStorage.userInfo);
       });
     </script>
   </body>

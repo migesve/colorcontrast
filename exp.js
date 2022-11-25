@@ -103,7 +103,26 @@ function clickListener(e) {
 
   NewMots = arrayShuffle(mots);
   //if (counterMots% 2 == 0){
-  if (clickedElement.value == "Go") {
+  if (clickedElement.value == "Start") {
+
+    // pour changer l'ordre des elements dans la page, deprecated since we can delete them with the next while
+
+    // divIntro = document.getElementsByClassName("intro")[0];
+    // divContent = document.getElementsByClassName("content")[0];
+    // container = divIntro.parentNode;
+    // container.appendChild(divContent);
+    // container.appendChild(divIntro);
+
+    let element = document.getElementById("intro");
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
+
+    //divIntro = document.getElementsByClassName("intro")[0].style.visibility = "hidden";
+    divContent = document.getElementsByClassName(
+      "content"
+    )[0].style.visibility = "visible";
+  } else if (clickedElement.value == "Go") {
     start = Date.now();
     motATrouver = NewMots[entierAleatoire(0, 9)];
     for (let i = 0; i < 10; i++) {
@@ -157,7 +176,7 @@ function clickListener(e) {
   if (counterMots >= 40) {
     document.getElementById(12).style.visibility = "hidden";
     document.getElementById("texte1").textContent =
-      "<p>L'expérience est fini, merci de votre participation</p>";
+      "<p> L'expérience est fini, merci de votre participation </p>";
 
     savedata(data);
   }
