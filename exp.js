@@ -179,9 +179,10 @@ function clickListener(e) {
 
       document.getElementById("plus18").style.color = "red";
       break id1;
-    } else if (age >= 18) {
-      document.getElementById("plus18").style.visibility = "hidden";
-    }
+    } 
+    // else if (age >= 18) {
+    //   document.getElementById("plus18").style.visibility = "hidden";
+    // }
 
     if (document.getElementById("checkbox").checked == false) {
       document.getElementsByClassName(
