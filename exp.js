@@ -1,3 +1,4 @@
+
 console.log("*****");
 
 let mots = [
@@ -42,6 +43,7 @@ let mots = [
   "Secours",
   "Planche",
 ];
+
 let motATrouver;
 // listeMots = new Array();
 // tabrep = new Array();
