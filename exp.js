@@ -1,5 +1,3 @@
-console.log("=========================");
-
 let mots = [
   "Tableau",
   "Maladie",
@@ -12,22 +10,22 @@ let mots = [
   "Courant",
   "Autiste",
 ];
-let motATrouver;
-/* 
-let jaune = "#dddd00";
-let bleu = "#0000ff";
 
-let grisC = "#888888"; // 2.82 avec bleu, 2.42 avec bleu2 et 2.43 avec jaune
-let grisF = "#b1b1b1"; // 1.71 avec bleu, 4 avec bleu2 et 1.47 avec jaune
-let gris3 = ""; // bfbfbf?
-//let grisCC = '#333333';
-let couleurs = [jaune, bleu, grisC, grisF];
-*/
-NewMots = arrayShuffle(mots);
-/*
-CoulMots = [couleurs[0], couleurs[1]];
-CoulFond = [couleurs[2], couleurs[3]];
-*/
+let motATrouver;
+
+//initialization des10 mots
+let listeMots = mots;
+dixMots = listeMots[0];
+listeMots.shift();
+for (let i = 0; i < 8; i++) {
+  //while pour ne pas avoir le meme mot 2 fois dans la liste
+  do {
+    aleatoire = entierAleatoire(0, 9);
+  } while (aleatoire == 0);
+
+  dixMots.push(mots[aleatoire]);
+}
+
 tabrep = [
   "bt gc-j",
   "bt gc-b",
@@ -101,13 +99,25 @@ function clickListener(e) {
   var clickedElement = window.event ? window.event.target : e.target,
     tags = document.getElementsByTagName(clickedElement.tagName);
 
-  NewMots = arrayShuffle(mots);
+  dixMots = listeMots[0];
+  listeMots.shift();
+  for (let i = 0; i < 8; i++) {
+    //while pour ne pas avoir le meme mot 2 fois dans la liste
+    do {
+      aleatoire = entierAleatoire(0, 9);
+    } while (aleatoire == counterMots + 1);
+
+    dixMots.push(mots[aleatoire]);
+  }
+
   //if (counterMots% 2 == 0){
   if (clickedElement.value == "Go") {
     start = Date.now();
-    motATrouver = NewMots[entierAleatoire(0, 9)];
+    motATrouver = dixMots[0];
+    dixMots = arrayShuffle(dixMots);
+
     for (let i = 0; i < 10; i++) {
-      document.getElementById(i).value = NewMots[i];
+      document.getElementById(i).value = dixMots[i];
       document.getElementById(i).className = tabrep[counterMots];
       document.getElementById(i).style.visibility = "visible";
     }
