@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>APP</title>
+    <link rel="stylesheet" href="style2.css" />
+  </head>
+
+  <body>
+    <h2>Expérience de recherche d'information visuelle.</h2>
+
+    <p class="body">
+      Bonjour, nous sommes deux étudiants du parcours Informatique et Cognition
+      du Master Mathématiques et Informatiques Appliquées aux Sciences Humaines
+      et Sociales.
+    </p>
+
+    <p class="body">
+      Nous avons créé cette expérience sur la recherche d'information visuelle
+      car nous souhaitons étudier les effets du contraste et des couleurs sur
+      cette dernière.
+    </p>
+
+    <p class="body">
+      L'expérience consiste en quarante petits tests de moins de 5 secondes et
+      l’ensemble de l'expérience ne devrait pas dépasser les 5 minutes.
+    </p>
+
+    <p class="body">
+      Il vous suffira de cliquer sur le bouton XXXXXX qui vous affichera un
+      certain mot ainsi qu'une liste de mots.
+    </p>
+
+    <p class="body">
+      Il vous sera alors demandé de chercher ledit mot parmi la liste fournie et
+      par conséquent de cliquer sur le bouton lui correspondant.
+    </p>
+
+    <p class="body">
+      Une fois réalisé, vous devrez cliquer sur le bouton XXXXXX pour lancer le
+      deuxième test et ainsi de suite.
+    </p>
+
+    <p class="body">
+      Nous vous garantissons l'anonymat total quant aux résultats que vous
+      fournirez. Si vous voulez connaître le résultat final de notre expérience,
+      laissez nous votre email. Un fois l'expérience terminée, nous effacerons
+      toutes vos données.
+    </p>
+    <form id="form">
+      <label for="nomPrenom" class="form-text-label">Nom et Prenom</label>
+      <br />
+      <input
+        type="text"
+        class="form"
+        name="nomPrenom"
+        access="false"
+        id="nomPrenom"
+      />
+      <br />
+      <label for="email" class="form-text-label">Email</label>
+      <br />
+      <input type="email" class="form" name="email" access="false" id="email" />
+      <br />
+      <label for="naiss" class="form-date-label">Date de naissance</label>
+      <br />
+      <input type="date" class="naiss" name="naiss" access="false" id="naiss" />
+      <br />
+      <label for="Sexe" class="form-radio-group-label">Genre</label>
+      <br />
+      <input
+        name="Sexe"
+        access="false"
+        id="Sexe-0"
+        value="masculin"
+        type="radio"
+      />
+      <label for="Sexe-0">Masculin</label>
+      <input
+        name="Sexe"
+        access="false"
+        id="Sexe-1"
+        value="feminin"
+        type="radio"
+      />
+      <label for="Sexe-1">Féminin</label>
+      <input
+        name="Sexe"
+        access="false"
+        id="Sexe-2"
+        value="autre"
+        type="radio"
+      />
+      <label for="Sexe-2">Autre</label>
+      <br />
+      <label for="checkbox-group" class="formbuilder-checkbox-group-label"
+        >Veuillez cocher cette case pour accepter de participer à notre
+        expérience. <span class="formbuilder-required">*</span></label
+      >
+      <br />
+      <input
+        name="checkbox-group"
+        access="false"
+        id="checkbox-group"
+        aria-required="true"
+        value="accept"
+        type="checkbox"
+      />
+      <label for="checkbox-group">Accepter</label>
+      <br />
+      <br />
+      <input class="start-retour" type="submit" value="Start" />
+    </form>
+    <script>
+      var requestURL = "data.json";
+      var request = new XMLHttpRequest();
+      request.open("GET", requestURL);
+      request.responseType = "json";
+      request.send();
+      request.onload = function () {
+        var users = request.response;
+      };
+
+      var form = document.querySelector("form");
+      let nom = document.querySelector("form");
+      let email = document.querySelector("form");
+
+      const loginDetails = {
+        nom: nom.value,
+        email: email.value,
+      };
+
+
+      form.addEventListener("submit", () => {
+        window.localStorage.setItem("user", JSON.stringify(loginDetails));
+
+        window.location.href = "exptest.html";
+        window.location.replace("exptest.html");
+
+        console.log(localStorage.userInfo);
+      });
+    </script>
+  </body>
+</html>
