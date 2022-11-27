@@ -1,4 +1,4 @@
-console.log("=========================");
+console.log("*****");
 
 let mots = [
   "Tableau",
@@ -11,23 +11,71 @@ let mots = [
   "Unanime",
   "Courant",
   "Autiste",
+  "Chambre",
+  "Travail",
+  "Horizon",
+  "Famille",
+  "Service",
+  "Voiture",
+  "Pouvoir",
+  "Hauteur",
+  "Journal",
+  "Docteur",
+  "Semaine",
+  "Musique",
+  "Justice",
+  "Passage",
+  "Dernier",
+  "Fatigue",
+  "Chaleur",
+  "Seconde",
+  "Victime",
+  "Cabinet",
+  "Morceau",
+  "Demande",
+  "Terrain",
+  "Cuisine",
+  "Respect",
+  "Branche",
+  "Machine",
+  "Cerveau",
+  "Secours",
+  "Planche",
 ];
 let motATrouver;
-/* 
-let jaune = "#dddd00";
-let bleu = "#0000ff";
+// listeMots = new Array();
+// tabrep = new Array();
+//copier liste mots dans une nouvelle reference
 
-let grisC = "#888888"; // 2.82 avec bleu, 2.42 avec bleu2 et 2.43 avec jaune
-let grisF = "#b1b1b1"; // 1.71 avec bleu, 4 avec bleu2 et 1.47 avec jaune
-let gris3 = ""; // bfbfbf?
-//let grisCC = '#333333';
-let couleurs = [jaune, bleu, grisC, grisF];
-*/
-NewMots = arrayShuffle(mots);
-/*
-CoulMots = [couleurs[0], couleurs[1]];
-CoulFond = [couleurs[2], couleurs[3]];
-*/
+arrayShuffle(mots);
+listeMots = mots.slice();
+
+// console.log(listeMots);
+
+// console.log(listeMots);
+
+//initialization des10 mots
+let dixMots = new Array();
+// arrayShuffle(listeMots); <---------- Mistery
+dixMots.push(listeMots[0]);
+motATrouver = listeMots[0];
+
+console.log(listeMots);
+listeMots.shift();
+
+console.log(listeMots);
+for (let i = 0; i < 9; i++) {
+  //while pour ne pas repeter le meme mot
+  do {
+    //while pour ne pas avoir le meme mot 2 fois dans la liste
+    do {
+      aleatoire = entierAleatoire(0, mots.length - 1);
+    } while (aleatoire == 0);
+  } while (dixMots.includes(mots[aleatoire]));
+  dixMots.push(mots[aleatoire]);
+}
+
+console.log(listeMots);
 tabrep = [
   "bt gc-j",
   "bt gc-b",
@@ -71,7 +119,7 @@ tabrep = [
   "bt gf-b",
 ];
 //document.write(tabrep.length)
-tabrep = arrayShuffle(tabrep);
+arrayShuffle(tabrep);
 let counterMots = 0;
 let headdata = ["Mot a trouver", "index", "Mot cliqué", "date", , "classe"]; //dans quel ordre son les données : si index = 12 btn Go sinon mot rechercher
 let data = [];
@@ -101,8 +149,8 @@ function clickListener(e) {
   var clickedElement = window.event ? window.event.target : e.target,
     tags = document.getElementsByTagName(clickedElement.tagName);
 
-  NewMots = arrayShuffle(mots);
   //if (counterMots% 2 == 0){
+
   id1: if (clickedElement.value == "Start") {
     // pour changer l'ordre des elements dans la page, deprecated since we can delete them with the next while
 
@@ -116,7 +164,7 @@ function clickListener(e) {
       (Date.now() - new Date(document.getElementById("naiss").value)) /
       31557600000;
     if (age < 18) {
-      if (document.getElementById("plus18")){
+      if (document.getElementById("plus18")) {
         break id1;
       }
       let g = document.createElement("div");
@@ -171,9 +219,12 @@ function clickListener(e) {
     //creer le test avec document.write???
   } else if (clickedElement.value == "Go") {
     start = Date.now();
-    motATrouver = NewMots[entierAleatoire(0, 9)];
+    console.log(dixMots);
+    dixMots = arrayShuffle(dixMots);
+    console.log(dixMots);
     for (let i = 0; i < 10; i++) {
-      document.getElementById(i).value = NewMots[i];
+      document.getElementById(i).value = dixMots[i];
+      console.log(dixMots[i]);
       document.getElementById(i).className = tabrep[counterMots];
       document.getElementById(i).style.visibility = "visible";
     }
@@ -212,6 +263,24 @@ function clickListener(e) {
       clickedElement.className,
       millis / 1000
     );
+
+    let dixMots = new Array();
+    dixMots.push(listeMots[0]);
+    motATrouver = listeMots[0];
+    console.log(listeMots);
+    listeMots.shift();
+    console.log(listeMots);
+    for (let i = 0; i < 9; i++) {
+      //while pour ne pas repeter le meme mot
+      //while pour ne pas avoir le meme mot 2 fois dans la liste
+      do {
+        aleatoire = entierAleatoire(0, mots.length - 1);
+      } while (
+        aleatoire == counterMots + 1 &&
+        dixMots.includes(mots[aleatoire])
+      );
+      dixMots.push(mots[aleatoire]);
+    }
 
     counterMots++;
 
