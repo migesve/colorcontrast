@@ -114,11 +114,11 @@ input.counter {
 .close:after {
   transform: rotate(-45deg);
 }
-/* 
+
 .bt {
   color: #ffffff !important;
   background-color: #333 !important;
-} */
+}
 
 .bt.gc-j {
   border: none;

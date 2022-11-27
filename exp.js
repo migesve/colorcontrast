@@ -67,10 +67,7 @@ console.log(listeMots);
 for (let i = 0; i < 9; i++) {
   //while pour ne pas repeter le meme mot
   do {
-    //while pour ne pas avoir le meme mot 2 fois dans la liste
-    do {
-      aleatoire = entierAleatoire(0, mots.length - 1);
-    } while (aleatoire == 0);
+    aleatoire = entierAleatoire(0, mots.length - 1);
   } while (dixMots.includes(mots[aleatoire]));
   dixMots.push(mots[aleatoire]);
 }
@@ -218,8 +215,10 @@ function clickListener(e) {
 
     //creer le test avec document.write???
   } else if (clickedElement.value == "Go") {
+    
+    console.log("Go");
     start = Date.now();
-    console.log(dixMots);
+    console.log(dixMots, dixMots[0]);
     dixMots = arrayShuffle(dixMots);
     console.log(dixMots);
     for (let i = 0; i < 10; i++) {
@@ -232,6 +231,22 @@ function clickListener(e) {
     document.getElementById("motATrouver").style.visibility = "visible";
     document.getElementById("texte1").textContent = "Trouvez le mot:";
     document.getElementById(12).disabled = true;
+
+    dixMots = new Array();
+    dixMots.push(listeMots[0]);
+    motATrouver = dixMots[0];
+    console.log(listeMots, motATrouver, dixMots[0]);
+    listeMots.shift();
+    console.log(listeMots, motATrouver, dixMots[0]);
+    for (let i = 0; i < 9; i++) {
+      //while pour ne pas repeter le meme mot
+      do {
+        aleatoire = entierAleatoire(0, mots.length - 1);
+      } while (dixMots.includes(mots[aleatoire]));
+      dixMots.push(mots[aleatoire]);
+    }
+
+    console.log(listeMots, motATrouver, dixMots[0]);
   } else {
     //document.getElementById(i).style.backgroundColor = CoulFond[entierAleatoire(0,1)];
     //document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
@@ -263,24 +278,6 @@ function clickListener(e) {
       clickedElement.className,
       millis / 1000
     );
-
-    let dixMots = new Array();
-    dixMots.push(listeMots[0]);
-    motATrouver = listeMots[0];
-    console.log(listeMots);
-    listeMots.shift();
-    console.log(listeMots);
-    for (let i = 0; i < 9; i++) {
-      //while pour ne pas repeter le meme mot
-      //while pour ne pas avoir le meme mot 2 fois dans la liste
-      do {
-        aleatoire = entierAleatoire(0, mots.length - 1);
-      } while (
-        aleatoire == counterMots + 1 &&
-        dixMots.includes(mots[aleatoire])
-      );
-      dixMots.push(mots[aleatoire]);
-    }
 
     counterMots++;
 
