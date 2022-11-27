@@ -179,7 +179,7 @@ function clickListener(e) {
 
       document.getElementById("plus18").style.color = "red";
       break id1;
-    } else {
+    } else if (age >= 18) {
       document.getElementById("plus18").style.visibility = "hidden";
     }
 
