@@ -111,7 +111,73 @@ function clickListener(e) {
   }
 
   //if (counterMots% 2 == 0){
-  if (clickedElement.value == "Go") {
+  id1: if (clickedElement.value == "Start") {
+    // pour changer l'ordre des elements dans la page, deprecated since we can delete them with the next while
+
+    // divIntro = document.getElementsByClassName("intro")[0];
+    // divContent = document.getElementsByClassName("content")[0];
+    // container = divIntro.parentNode;
+    // container.appendChild(divContent);
+    // container.appendChild(divIntro);
+
+    var age =
+      (Date.now() - new Date(document.getElementById("naiss").value)) /
+      31557600000;
+    if (age < 18) {
+      if (document.getElementById("plus18")){
+        break id1;
+      }
+      let g = document.createElement("div");
+      let plus18 = document.createTextNode(
+        "Vous devez avoir plus de 18 ans pour participer à cette expérience"
+      );
+      g.appendChild(plus18);
+
+      g.id = "plus18";
+
+      document
+        .getElementById("naiss")
+        .parentNode.insertBefore(g, document.getElementById("naiss"));
+
+      document.getElementById("plus18").style.color = "red";
+      break id1;
+    }
+
+    if (document.getElementById("checkbox").checked == false) {
+      document.getElementsByClassName(
+        "formbuilder-checkbox-group-label"
+      )[0].textContent =
+        "S'il vous plaît cocher cette case pour accepter de participer à notre expérience.";
+      document.getElementsByClassName(
+        "formbuilder-checkbox-group-label"
+      )[0].style.color = "red";
+      break id1;
+    }
+
+    data.push(
+      document.getElementById("nomPrenom").value,
+      document.getElementById("email").value,
+      document.getElementById("naiss").value,
+      document.getElementById("Sexe-0").checked,
+      document.getElementById("Sexe-1").checked,
+      document.getElementById("Sexe-2").checked,
+      document.getElementById("checkbox").value
+    );
+
+    let element = document.getElementById("intro");
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
+
+    //divIntro = document.getElementsByClassName("intro")[0].style.visibility = "hidden";
+
+    // test visible
+    divContent = document.getElementsByClassName(
+      "content"
+    )[0].style.visibility = "visible";
+
+    //creer le test avec document.write???
+  } else if (clickedElement.value == "Go") {
     start = Date.now();
     motATrouver = dixMots[0];
     dixMots = arrayShuffle(dixMots);
@@ -130,7 +196,7 @@ function clickListener(e) {
     //document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
     document.getElementById("motATrouver").style.visibility = "hidden";
     document.getElementById("texte1").textContent =
-      "Clickez sur le button XXXXX";
+      "Clickez sur le button Go pour continuer";
     document.getElementById(12).disabled = false;
     for (let i = 0; i < 10; i++) {
       document.getElementById(i).style.visibility = "hidden";
@@ -167,7 +233,7 @@ function clickListener(e) {
   if (counterMots >= 40) {
     document.getElementById(12).style.visibility = "hidden";
     document.getElementById("texte1").textContent =
-      "<p>L'expérience est fini, merci de votre participation</p>";
+      "L'expérience est fini, merci de votre participation";
 
     savedata(data);
   }
