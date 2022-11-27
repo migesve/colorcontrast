@@ -1,4 +1,3 @@
-
 console.log("*****");
 
 let mots = [
@@ -62,10 +61,10 @@ let dixMots = new Array();
 dixMots.push(listeMots[0]);
 motATrouver = listeMots[0];
 
-console.log(listeMots);
+//console.log(listeMots);
 listeMots.shift();
 
-console.log(listeMots);
+//console.log(listeMots);
 for (let i = 0; i < 9; i++) {
   //while pour ne pas repeter le meme mot
   do {
@@ -74,7 +73,7 @@ for (let i = 0; i < 9; i++) {
   dixMots.push(mots[aleatoire]);
 }
 
-console.log(listeMots);
+//console.log(listeMots);
 tabrep = [
   "bt gc-j",
   "bt gc-b",
@@ -180,6 +179,8 @@ function clickListener(e) {
 
       document.getElementById("plus18").style.color = "red";
       break id1;
+    } else {
+      document.getElementById("plus18").style.visibility = "hidden";
     }
 
     if (document.getElementById("checkbox").checked == false) {
@@ -217,15 +218,14 @@ function clickListener(e) {
 
     //creer le test avec document.write???
   } else if (clickedElement.value == "Go") {
-    
-    console.log("Go");
+    //console.log("Go");
     start = Date.now();
-    console.log(dixMots, dixMots[0]);
+    //console.log(dixMots, dixMots[0]);
     dixMots = arrayShuffle(dixMots);
-    console.log(dixMots);
+    //console.log(dixMots);
     for (let i = 0; i < 10; i++) {
       document.getElementById(i).value = dixMots[i];
-      console.log(dixMots[i]);
+      //console.log(dixMots[i]);
       document.getElementById(i).className = tabrep[counterMots];
       document.getElementById(i).style.visibility = "visible";
     }
@@ -237,9 +237,9 @@ function clickListener(e) {
     dixMots = new Array();
     dixMots.push(listeMots[0]);
     motATrouver = dixMots[0];
-    console.log(listeMots, motATrouver, dixMots[0]);
+    //console.log(listeMots, motATrouver, dixMots[0]);
     listeMots.shift();
-    console.log(listeMots, motATrouver, dixMots[0]);
+    //console.log(listeMots, motATrouver, dixMots[0]);
     for (let i = 0; i < 9; i++) {
       //while pour ne pas repeter le meme mot
       do {
@@ -248,7 +248,7 @@ function clickListener(e) {
       dixMots.push(mots[aleatoire]);
     }
 
-    console.log(listeMots, motATrouver, dixMots[0]);
+    //console.log(listeMots, motATrouver, dixMots[0]);
   } else {
     //document.getElementById(i).style.backgroundColor = CoulFond[entierAleatoire(0,1)];
     //document.getElementById(i).style.color = CoulMots[entierAleatoire(0,1)];
@@ -263,14 +263,14 @@ function clickListener(e) {
     millis = Date.now() - start;
 
     // ce qu'on cherche garder dans le JSON
-    console.log({
-      essai: counterMots,
-      motATrouver: document.getElementById("motATrouver").textContent,
-      id: clickedElement.id,
-      MotClicke: clickedElement.value,
-      style: clickedElement.className,
-      timeElapsedSeconds: millis / 1000,
-    });
+    // console.log({
+    //   essai: counterMots,
+    //   motATrouver: document.getElementById("motATrouver").textContent,
+    //   id: clickedElement.id,
+    //   MotClicke: clickedElement.value,
+    //   style: clickedElement.className,
+    //   timeElapsedSeconds: millis / 1000,
+    // });
 
     data.push(
       counterMots,
@@ -298,7 +298,7 @@ function clickListener(e) {
 }
 
 function clickedId(clickedId) {
-  console.log(clickedId);
+  //console.log(clickedId);
 }
 
 function savedata(data) {
