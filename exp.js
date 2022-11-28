@@ -1,46 +1,46 @@
 console.log("*****");
 
 let mots = [
-  "Tableau",
-  "Maladie",
-  "Acceder",
-  "Haricot",
-  "Tension",
-  "Pendule",
-  "Parasol",
-  "Unanime",
-  "Courant",
-  "Autiste",
-  "Chambre",
-  "Travail",
-  "Horizon",
-  "Famille",
-  "Service",
-  "Voiture",
-  "Pouvoir",
-  "Hauteur",
-  "Journal",
-  "Docteur",
-  "Semaine",
-  "Musique",
-  "Justice",
-  "Passage",
-  "Dernier",
-  "Fatigue",
-  "Chaleur",
-  "Seconde",
-  "Victime",
-  "Cabinet",
-  "Morceau",
-  "Demande",
-  "Terrain",
-  "Cuisine",
-  "Respect",
-  "Branche",
-  "Machine",
-  "Cerveau",
-  "Secours",
-  "Planche",
+  "tableau",
+  "maladie",
+  "acceder",
+  "haricot",
+  "tension",
+  "pendule",
+  "parasol",
+  "unanime",
+  "courant",
+  "autiste",
+  "chambre",
+  "travail",
+  "horizon",
+  "famille",
+  "service",
+  "voiture",
+  "pouvoir",
+  "hauteur",
+  "journal",
+  "docteur",
+  "semaine",
+  "musique",
+  "justice",
+  "passage",
+  "dernier",
+  "fatigue",
+  "chaleur",
+  "seconde",
+  "victime",
+  "cabinet",
+  "morceau",
+  "demande",
+  "terrain",
+  "cuisine",
+  "respect",
+  "branche",
+  "machine",
+  "cerveau",
+  "secours",
+  "planche",
 ];
 
 let motATrouver;
@@ -159,8 +159,7 @@ function clickListener(e) {
     // container.appendChild(divIntro);
 
     var age =
-      (Date.now() - new Date(document.getElementById("naiss").value)) /
-      31557600000;
+      (2022 - document.getElementById("naiss").value);
     if (age < 18) {
       if (document.getElementById("plus18")) {
         break id1;
@@ -180,11 +179,14 @@ function clickListener(e) {
       document.getElementById("plus18").style.color = "red";
       break id1;
     } 
+    console.log(age)
     // else if (age >= 18) {
     //   document.getElementById("plus18").style.visibility = "hidden";
     // }
 
-    if (document.getElementById("checkbox").checked == false) {
+    if (document.getElementById("checkbox").checked == false
+    && document.getElementById("naiss").textContent == "" &&
+    document.getElementById("Sexe").textContent == "") {
       document.getElementsByClassName(
         "formbuilder-checkbox-group-label"
       )[0].textContent =
@@ -196,8 +198,6 @@ function clickListener(e) {
     }
 
     data.push(
-      document.getElementById("nomPrenom").value,
-      document.getElementById("email").value,
       document.getElementById("naiss").value,
       document.getElementById("Sexe-0").checked,
       document.getElementById("Sexe-1").checked,
@@ -224,12 +224,16 @@ function clickListener(e) {
     //console.log(dixMots, dixMots[0]);
     dixMots = arrayShuffle(dixMots);
     //console.log(dixMots);
+    let latence = entierAleatoire(500,1300)
+    setTimeout(() => {  
+    
     for (let i = 0; i < 10; i++) {
       document.getElementById(i).value = dixMots[i];
       //console.log(dixMots[i]);
       document.getElementById(i).className = tabrep[counterMots];
       document.getElementById(i).style.visibility = "visible";
     }
+ 
     document.getElementById("motATrouver").textContent = motATrouver;
     document.getElementById("motATrouver").style.visibility = "visible";
     document.getElementById("texte1").textContent = "Trouvez le mot:";
@@ -248,7 +252,7 @@ function clickListener(e) {
       } while (dixMots.includes(mots[aleatoire]));
       dixMots.push(mots[aleatoire]);
     }
-
+  }, latence)
     //console.log(listeMots, motATrouver, dixMots[0]);
   } else {
     //document.getElementById(i).style.backgroundColor = CoulFond[entierAleatoire(0,1)];

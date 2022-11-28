@@ -44,35 +44,15 @@
 
       <p class="body">
         Nous vous garantissons l'anonymat total quant aux résultats que vous
-        fournirez. Si vous voulez connaître le résultat final de notre
-        expérience, laissez nous votre email. Un fois l'expérience terminée,
-        nous effacerons toutes vos données.
+        fournirez. 
       </p>
       <form id="form">
-        <label for="nomPrenom" class="form-text-label">Nom et Prenom</label>
-        <br />
+        
         <input
-          type="text"
-          class="form"
-          name="nomPrenom"
-          access="false"
-          id="nomPrenom"
-        />
-        <br />
-        <label for="email" class="form-text-label">Email</label>
-        <br />
-        <input
-          type="email"
-          class="form"
-          name="email"
-          access="false"
-          id="email"
-        />
-        <br />
-        <label for="naiss" class="form-date-label">Date de naissance</label>
-        <br />
-        <input
-          type="date"
+          type="number"
+          max="2004"
+          min="1900"
+          step="1"
           class="naiss"
           name="naiss"
           access="false"
