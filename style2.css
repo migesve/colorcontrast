@@ -130,7 +130,8 @@ input.counter {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: bold;
   width: 120px;
 }
 .bt.gc-b {
@@ -143,7 +144,8 @@ input.counter {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: bold;
   width: 120px;
 }
 
@@ -157,7 +159,8 @@ input.counter {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: bold;
   width: 120px;
 }
 .bt.gf-b {
@@ -170,7 +173,8 @@ input.counter {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: bold;
   width: 120px;
 }
 
