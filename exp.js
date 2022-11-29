@@ -179,7 +179,7 @@ function clickListener(e) {
 
       document.getElementById("plus18").style.color = "red";
       break id1;
-    } 
+    }
     // else if (age >= 18) {
     //   document.getElementById("plus18").style.visibility = "hidden";
     // }
@@ -224,6 +224,10 @@ function clickListener(e) {
     //console.log(dixMots, dixMots[0]);
     dixMots = arrayShuffle(dixMots);
     //console.log(dixMots);
+    var delayInMilliseconds = 2000;
+
+    setTimeout(function () {}, delayInMilliseconds);
+
     for (let i = 0; i < 10; i++) {
       document.getElementById(i).value = dixMots[i];
       //console.log(dixMots[i]);
@@ -262,25 +266,29 @@ function clickListener(e) {
     }
 
     millis = Date.now() - start;
-
     // ce qu'on cherche garder dans le JSON
-    // console.log({
-    //   essai: counterMots,
-    //   motATrouver: document.getElementById("motATrouver").textContent,
-    //   id: clickedElement.id,
-    //   MotClicke: clickedElement.value,
-    //   style: clickedElement.className,
-    //   timeElapsedSeconds: millis / 1000,
-    // });
+    console.log({
+      essai: counterMots,
+      motATrouver: document.getElementById("motATrouver").textContent,
+      id: clickedElement.id,
+      MotClicke: clickedElement.value,
+      backgroundColor: document.getElementById(clickedElement.id)
+        .style.backgroundColor,
+      textColor: document.getElementById(clickedElement.id).style
+        .color,
+      timeElapsedSeconds: millis / 1000,
+    });
 
-    data.push(
-      counterMots,
-      document.getElementById("motATrouver").textContent,
-      clickedElement.id,
-      clickedElement.value,
-      clickedElement.className,
-      millis / 1000
-    );
+    data.push({
+      motATrouver: document.getElementById("motATrouver").textContent,
+      id: clickedElement.id,
+      motClicke: clickedElement.value,
+      backgroundColor: document.getElementById(clickedElement.id)
+        .style.backgroundColor,
+      textColor: document.getElementById(clickedElement.id).style
+        .color,
+      tempsDeReponse: millis / 1000,
+    });
 
     counterMots++;
 
