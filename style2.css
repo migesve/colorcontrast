@@ -120,7 +120,7 @@ input.counter {
   background-color: #333 !important;
 } */
 
-.bt.gc-j {
+.gc-j {
   border: none;
   border-radius: 0.25rem;
   color: #777700; /*#dd0;*/
@@ -134,7 +134,7 @@ input.counter {
   font-weight: bold;
   width: 120px;
 }
-.bt.gc-b {
+.gc-b {
   border: none;
   border-radius: 0.25rem;
   color: #0000ee; /*#dd0;*/
@@ -149,7 +149,7 @@ input.counter {
   width: 120px;
 }
 
-.bt.gf-j {
+.gf-j {
   border: none;
   border-radius: 0.25rem;
   color: #777700; /*#dd0;*/
@@ -163,7 +163,7 @@ input.counter {
   font-weight: bold;
   width: 120px;
 }
-.bt.gf-b {
+.gf-b {
   border: none;
   border-radius: 0.25rem;
   color: #0000ee; /*#dd0;*/
