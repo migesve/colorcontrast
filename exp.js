@@ -172,8 +172,7 @@ function clickListener(e) {
 
       g.id = "plus18";
 
-      document
-        .getElementById("naiss")
+      document.getElementById("naiss")
         .parentNode.insertBefore(g, document.getElementById("naiss"));
 
       document.getElementById("plus18").style.color = "red";
@@ -184,13 +183,15 @@ function clickListener(e) {
     //   document.getElementById("plus18").style.visibility = "hidden";
     // }
 
-    if (document.getElementById("checkbox").checked == false
-    && document.getElementById("naiss").textContent == "" &&
-    document.getElementById("Sexe").textContent == "") {
+    if ((document.getElementById("checkbox").checked == false)
+    || (document.getElementById("naiss").textContent == null) ||
+    (!document.getElementById("Sexe-0").checked &&
+        !document.getElementById("Sexe-1").checked&&
+        !document.getElementById("Sexe-2").checked)) {
       document.getElementsByClassName(
         "formbuilder-checkbox-group-label"
       )[0].textContent =
-        "S'il vous plaît cocher cette case pour accepter de participer à notre expérience.";
+        "S'il vous plaît remplisser toutes les informations et cocher cette case pour accepter de participer à notre expérience.";
       document.getElementsByClassName(
         "formbuilder-checkbox-group-label"
       )[0].style.color = "red";
