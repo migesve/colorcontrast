@@ -219,12 +219,17 @@ function clickListener(e) {
       break id1;
     }
 
-    data.push(
-      document.getElementById("naiss").value,
-      document.getElementById("Sexe-0").checked,
-      document.getElementById("Sexe-1").checked,
-      document.getElementById("Sexe-2").checked,
-      document.getElementById("checkbox").value
+    data.push({
+      AnneeNaissance : document.getElementById("naiss").value,
+      Sexe: document.getElementById("Sexe-0").checked,
+      Sexe : document.getElementById("Sexe-1").checked,
+      Sexe : document.getElementById("Sexe-2").checked,
+      Agreement : document.getElementById("checkbox").value,
+      tailleEcran : ny + "x" + nx, 
+      //TmpAttente: latence,
+      OsVersion : infos
+    }
+      
     );
 
     let element = document.getElementById("intro");
@@ -317,24 +322,45 @@ function clickListener(e) {
 
     millis = Date.now() - start;
     // ce qu'on cherche garder dans le JSON
+
+    if (document.getElementById(clickedElement.id).className.substr(3,2) == "gc"){
+      bgc = "#888888"
+    }
+    else {
+      bgc = "#333333"
+    }
+    if (document.getElementById(clickedElement.id).className.substr(6) == "j"){
+      tc = "#777700"
+    }
+    else {
+      tc = "#0000ee"
+    }
+
     console.log({
       essai: counterMots,
       motATrouver: document.getElementById("motATrouver").textContent,
       id: clickedElement.id,
       MotClicke: clickedElement.value,
-      backgroundColor: document.getElementById(clickedElement.id).style
-        .backgroundColor,
-      textColor: document.getElementById(clickedElement.id).style.color,
+      ClassName: document.getElementById(clickedElement.id).className,
+      backgroundColor : document.getElementById(clickedElement.id).className.substr(3,2),
+      BGC : bgc,
+      TC : tc,
+      textColor :document.getElementById(clickedElement.id).className.substr(6),
       timeElapsedSeconds: millis / 1000,
+      tailleEcran : ny + "x" + nx, 
+      OsVersion : infos
     });
-
+   
+    
     data.push({
       motATrouver: document.getElementById("motATrouver").textContent,
       id: clickedElement.id,
       motClicke: clickedElement.value,
-      backgroundColor: document.getElementById(clickedElement.id).style
-        .backgroundColor,
-      textColor: document.getElementById(clickedElement.id).style.color,
+      ClassName: document.getElementById(clickedElement.id).className,
+      backgroundColor: document.getElementById(clickedElement.id).className.substr(3,2),
+      textColor: document.getElementById(clickedElement.id).className.substr(6),
+      BGC : bgc,
+      TC : tc,
       tempsDeReponse: millis / 1000,
     });
 
