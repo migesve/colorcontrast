@@ -273,6 +273,20 @@ function clickListener(e) {
 
     millis = Date.now() - start;
     // ce qu'on cherche garder dans le JSON
+
+    if (document.getElementById(clickedElement.id).className.substr(3,2) == "gc"){
+      bgc = "#888888"
+    }
+    else {
+      bgc = "#333333"
+    }
+    if (document.getElementById(clickedElement.id).className.substr(6) == "j"){
+      tc = "#777700"
+    }
+    else {
+      tc = "#0000ee"
+    }
+
     console.log({
       essai: counterMots,
       motATrouver: document.getElementById("motATrouver").textContent,
@@ -280,6 +294,8 @@ function clickListener(e) {
       MotClicke: clickedElement.value,
       ClassName: document.getElementById(clickedElement.id).className,
       backgroundColor : document.getElementById(clickedElement.id).className.substr(3,2),
+      BGC : bgc,
+      TC : tc,
       textColor :document.getElementById(clickedElement.id).className.substr(6),
       timeElapsedSeconds: millis / 1000,
       tailleEcran : ny + "x" + nx, 
@@ -294,6 +310,8 @@ function clickListener(e) {
       ClassName: document.getElementById(clickedElement.id).className,
       backgroundColor: document.getElementById(clickedElement.id).className.substr(3,2),
       textColor: document.getElementById(clickedElement.id).className.substr(6),
+      BGC : bgc,
+      TC : tc,
       tempsDeReponse: millis / 1000,
     });
 
