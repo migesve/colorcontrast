@@ -8,43 +8,49 @@
   </head>
   <body>
     <script type="text/javascript">
-      
       function getWindowHeight() {
-          var windowHeight=0;
-          if (typeof(window.innerHeight)=='number') {
-                windowHeight=window.innerHeight;
+        var windowHeight = 0;
+        if (typeof window.innerHeight == "number") {
+          windowHeight = window.innerHeight;
+        } else {
+          if (
+            document.documentElement &&
+            document.documentElement.clientHeight
+          ) {
+            windowHeight = document.documentElement.clientHeight;
           } else {
-              if (document.documentElement&& document.documentElement.clientHeight) {
-                  windowHeight = document.documentElement.clientHeight;
-              } else {
-                  if (document.body&&document.body.clientHeight) {
-                      windowHeight=document.body.clientHeight;
-                  }
+            if (document.body && document.body.clientHeight) {
+              windowHeight = document.body.clientHeight;
             }
           }
-          return windowHeight;
+        }
+        return windowHeight;
       }
       function getWindowWidth() {
-        var windowWidth=0;
-        if (typeof(window.innerWidth)=='number') {
-          windowWidth=window.innerWidth;
+        var windowWidth = 0;
+        if (typeof window.innerWidth == "number") {
+          windowWidth = window.innerWidth;
         } else {
-          if (document.documentElement&& document.documentElement.clientWidth) {
+          if (
+            document.documentElement &&
+            document.documentElement.clientWidth
+          ) {
             windowWidth = document.documentElement.clientWidth;
-              } else {
-          if (document.body&&document.body.clientWidth) {
-            windowWidth=document.body.clientWidth;}
-                  }
-              }
+          } else {
+            if (document.body && document.body.clientWidth) {
+              windowWidth = document.body.clientWidth;
+            }
+          }
+        }
         return windowWidth;
       }
       infos = navigator.userAgent;
-      ny=getWindowHeight();
-      nx=getWindowWidth();
+      ny = getWindowHeight();
+      nx = getWindowWidth();
       // enlever l'alert
-      alert('taille nx ' + nx +' ny '+ny + "infos :" + infos);  
+      alert("taille nx " + nx + " ny " + ny + "infos :" + infos);
       //-->
-      </script>
+    </script>
     <div class="intro" id="intro">
       <h3>Expérience de recherche d'information visuelle</h3>
 
@@ -76,16 +82,18 @@
       </p>
 
       <p class="body">
-        Une fois réalisé, vous devrez cliquer sur le bouton GO pour lancer
-        le deuxième test et ainsi de suite.
+        Une fois réalisé, vous devrez cliquer sur le bouton GO pour lancer le
+        deuxième test et ainsi de suite.
       </p>
 
       <p class="body">
         Nous vous garantissons l'anonymat total quant aux résultats que vous
-        fournirez. 
+        fournirez.
       </p>
       <form id="form">
-        
+        <label for="naiss" class="formbuilder-text-label"
+          >Age</label
+        >
         <input
           type="number"
           max="2004"
@@ -95,7 +103,6 @@
           name="naiss"
           access="false"
           id="naiss"
-         
         />
         <br />
         <label for="Sexe" class="form-radio-group-label">Genre</label>
@@ -106,7 +113,6 @@
           id="Sexe-0"
           value="masculin"
           type="radio"
-       
         />
         <label for="Sexe-0">Masculin</label>
         <input
@@ -115,7 +121,6 @@
           id="Sexe-1"
           value="feminin"
           type="radio"
-         
         />
         <label for="Sexe-1">Féminin</label>
         <input
@@ -124,7 +129,6 @@
           id="Sexe-2"
           value="autre"
           type="radio"
-         
         />
         <label for="Sexe-2">Autre</label>
         <br />
