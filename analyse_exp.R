@@ -76,10 +76,54 @@ str (exp.data)
 
 participant.info <- data.frame (timestamp = character (),
                                 tailleEcran = character (),
-                                gender0 = logical (),
-                                gender1 = logical (),
-                                gender2 = logical (),
+                                gender = logical(),
                                 yearOfBirth = character (),
+                                versionOS = character ()
+                                # motATrouver = character (),
+                                # id = integer(),
+                                # motClicke = character (),
+                                # ClassName = character (),
+                                # BackGroundColor = character (),
+                                # TextColor = character (),
+                                # TR = numeric()
+                                )
+
+# if (dat[[1]]$Sexe0 == TRUE){
+#   gender = "Homme"
+# } else if (dat[[1]]$Sexe1 == TRUE){
+#   gender = "Femme"
+# } else if(dat[[1]]$Sexe2 == TRUE){
+#   gender = "Autre"
+# }
+
+# for (i in names(exp.data)){
+#    
+#     participant.info <- rbind (participant.info,
+#                                data.frame (timestamp = i,
+#                                            tailleEcran = exp.data[[i]][[1]]$tailleEcran,
+#                                            gender =  exp.data[[i]][[1]]$Sexe,
+#                                            yearOfBirth = exp.data[[i]][[1]]$AnneeNaissance,
+#                                            versionOS = exp.data[[i]][[1]]$OsVersion
+#                                            
+#                                            ))
+# #  }
+#   
+# }
+
+### **** Exploration et statistiques descriptives
+
+# table (participant.info$gender)
+# 
+# table (participant.info [, "screen.size"])
+# 
+# table (participant.info [, "age.range"])
+# 
+# table (participant.info [, c ("gender", "age.range")])
+
+### *** Data frame avec les données des essais
+
+
+participant.data <- data.frame (timestamp = character (),
                                 motATrouver = character (),
                                 id = integer(),
                                 motClicke = character (),
@@ -88,20 +132,26 @@ participant.info <- data.frame (timestamp = character (),
                                 TextColor = character (),
                                 TR = numeric())
 
-for (n in names (exp.data)) {
-  dat <- exp.data [[n]]
-  participant.info <- rbind (participant.info,
-                             data.frame (timestamp = n,
-                                         tailleEcran = dat$tailleEcran,
-                                         gender0 = dat$Sexe0,
-                                         gender1 = dat$Sexe1,
-                                         gender2 = dat$Sexe2,
-                                         yearOfBirth = dat$AnneeNaissance,
-                                         motATrouver = dat$MotATrouver,
-                                         id = dat$id,
-                                         motClicke = dat$moClicke,
-                                         ClassName = dat$ClassName,
-                                         BackGroundColor = dat$BGC,
-                                         TextColor = dat$TC,
-                                         TR = dat$tempsdeReponse))
+for (t in length(exp.data)) {
+  df = data.frame (timestamp = character (),
+                   motATrouver = character (),
+                   id = integer(),
+                   motClicke = character (),
+                   ClassName = character (),
+                   BackGroundColor = character (),
+                   TextColor = character (),
+                   TR = numeric())
+  for (trial in (2:length(exp.data[[t]]))) {
+    df <- rbind (df,
+                 data.frame(timestamp = t,
+                            motATrouver = exp.data[[t]][[trial]]$motATrouver,
+                            id = exp.data[[t]][[trial]]$id,
+                            motClicke = exp.data[[t]][[trial]]$motClicke,
+                            ClassName = exp.data[[t]][[trial]]$ClassName,
+                            BackGroundColor = exp.data[[t]][[trial]]$BGC,
+                            TextColor = exp.data[[t]][[trial]]$TC,
+                            TR = exp.data[[t]][[trial]]$tempsDeReponse))
+  }
+  participant.data <- rbind (participant.data, df)
 }
+
