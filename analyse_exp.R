@@ -88,13 +88,6 @@ participant.info <- data.frame (timestamp = character (),
                                 # TR = numeric()
                                 )
 
-# if (dat[[1]]$Sexe0 == TRUE){
-#   gender = "Homme"
-# } else if (dat[[1]]$Sexe1 == TRUE){
-#   gender = "Femme"
-# } else if(dat[[1]]$Sexe2 == TRUE){
-#   gender = "Autre"
-# }
 
 # for (i in names(exp.data)){
 #    
@@ -110,17 +103,7 @@ participant.info <- data.frame (timestamp = character (),
 #   
 # }
 
-### **** Exploration et statistiques descriptives
 
-# table (participant.info$gender)
-# 
-# table (participant.info [, "screen.size"])
-# 
-# table (participant.info [, "age.range"])
-# 
-# table (participant.info [, c ("gender", "age.range")])
-
-### *** Data frame avec les données des essais
 
 
 participant.data <- data.frame (timestamp = character (),
@@ -132,7 +115,7 @@ participant.data <- data.frame (timestamp = character (),
                                 TextColor = character (),
                                 TR = numeric())
 
-for (t in length(exp.data)) {
+for (t in names(exp.data)) {
   df = data.frame (timestamp = character (),
                    motATrouver = character (),
                    id = integer(),
