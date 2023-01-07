@@ -92,7 +92,7 @@ participant.info <- data.frame (timestamp = character (),
                                 # TR = numeric()
                                 )
 
-
+exp.data = exp.data[-c(1,3,4,5,6,10)]
 for (i in names(exp.data)){
                       
     if (exp.data[[i]][[1]]$Sexe0 == TRUE){
@@ -148,6 +148,7 @@ for (t in names(exp.data)) {
   participant.data <- rbind (participant.data, df)
 }
 
+
 ### **** Consistence des données
 
 table(participant.data [, c ("BackGroundColor", "TextColor")])
@@ -156,13 +157,11 @@ table(participant.data [, c ("TextColor", "BackGroundColor", "id")])
 
 table (participant.data [, c ("timestamp")])
 
-#S <- subset (participant.data, timestamp == participant.data$timestamp [1])
-
-#table (S [, c (BackGroundCoor, "TextColor")])
 
 ### **** Statistiques descriptives
 
 boxplot (TR ~ BackGroundColor * TextColor, participant.data)
+
 
 boxplot (TR ~ BackGroundColor * TextColor, participant.data, log = "y")
 
@@ -170,14 +169,11 @@ aggregate (TR ~ BackGroundColor * TextColor, participant.data, mean)
 
 aggregate (TR ~ BackGroundColor * TextColor, participant.data, median)
 
-# participant.data$order <- rep(seq(1, 6), 30)
-# 
-# head (participant.data)
-# 
-# tail (participant.data)
-# 
-# df.agg <- aggregate (time ~ order, participant.data, mean)
-# df.agg
+## faire anova
 
-boxplot(time ~ order, participant.data, log = "y")
+### ** Ajustement des modèles
+fm.lm.TR <- lm (TR ~ BackGroundColor * TextColor, participant.data)
+summary (fm.lm.TR)
 
+### ** Tableaux d'ANOVA
+anova (fm.lm.TR)
