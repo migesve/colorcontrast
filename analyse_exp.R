@@ -54,7 +54,11 @@ for (f in files) {
   timestamp <- strsplit (f, "\\.") [[1]] [1]
   mois = substr(timestamp, start = 6, stop = 7)
   jour = substr(timestamp, start = 9, stop = 10)
-  if ( mois == "12" && as.numeric(jour)>=2 ){
+  if ( mois == "12" && as.numeric(jour)>2 ){
+    ## Sauvegarde dans la liste sous le champ "timestamp"
+    exp.data [[timestamp]] <- fromJSON (file = url)
+  }
+  if (mois == "01"){
     ## Sauvegarde dans la liste sous le champ "timestamp"
     exp.data [[timestamp]] <- fromJSON (file = url)
   }
@@ -89,19 +93,25 @@ participant.info <- data.frame (timestamp = character (),
                                 )
 
 
-# for (i in names(exp.data)){
-#    
-#     participant.info <- rbind (participant.info,
-#                                data.frame (timestamp = i,
-#                                            tailleEcran = exp.data[[i]][[1]]$tailleEcran,
-#                                            gender =  exp.data[[i]][[1]]$Sexe,
-#                                            yearOfBirth = exp.data[[i]][[1]]$AnneeNaissance,
-#                                            versionOS = exp.data[[i]][[1]]$OsVersion
-#                                            
-#                                            ))
-# #  }
-#   
-# }
+for (i in names(exp.data)){
+                      
+    if (exp.data[[i]][[1]]$Sexe0 == TRUE){
+      sexe = "Masculin"
+    }
+    else if (exp.data[[i]][[1]]$Sexe1 == TRUE){
+      sexe = "Féminin"
+    }
+    else {sexe = "autre"}
+    
+    participant.info <- rbind (participant.info, data.frame (timestamp = i,
+                                 tailleEcran = exp.data[[i]][[1]]$tailleEcran,
+                                 gender =  sexe,
+                                 yearOfBirth = exp.data[[i]][[1]]$AnneeNaissance,
+                                 versionOS = exp.data[[i]][[1]]$OsVersion
+
+                                           ))
+
+}
 
 
 
@@ -146,9 +156,9 @@ table(participant.data [, c ("TextColor", "BackGroundColor", "id")])
 
 table (participant.data [, c ("timestamp")])
 
-S <- subset (participant.data, timestamp == participant.data$timestamp [1])
+#S <- subset (participant.data, timestamp == participant.data$timestamp [1])
 
-table (S [, c ("style", "menu.type")])
+#table (S [, c (BackGroundCoor, "TextColor")])
 
 ### **** Statistiques descriptives
 
