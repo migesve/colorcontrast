@@ -54,7 +54,11 @@ for (f in files) {
   timestamp <- strsplit (f, "\\.") [[1]] [1]
   mois = substr(timestamp, start = 6, stop = 7)
   jour = substr(timestamp, start = 9, stop = 10)
-  if ( mois == "12" && as.numeric(jour)>=2 ){
+  if ( mois == "12" && as.numeric(jour)>2 ){
+    ## Sauvegarde dans la liste sous le champ "timestamp"
+    exp.data [[timestamp]] <- fromJSON (file = url)
+  }
+  if (mois == "01"){
     ## Sauvegarde dans la liste sous le champ "timestamp"
     exp.data [[timestamp]] <- fromJSON (file = url)
   }
@@ -76,10 +80,43 @@ str (exp.data)
 
 participant.info <- data.frame (timestamp = character (),
                                 tailleEcran = character (),
-                                gender0 = logical (),
-                                gender1 = logical (),
-                                gender2 = logical (),
+                                gender = logical(),
                                 yearOfBirth = character (),
+                                versionOS = character ()
+                                # motATrouver = character (),
+                                # id = integer(),
+                                # motClicke = character (),
+                                # ClassName = character (),
+                                # BackGroundColor = character (),
+                                # TextColor = character (),
+                                # TR = numeric()
+                                )
+
+exp.data = exp.data[-c(1,3,4,5,6,10)]
+for (i in names(exp.data)){
+                      
+    if (exp.data[[i]][[1]]$Sexe0 == TRUE){
+      sexe = "Masculin"
+    }
+    else if (exp.data[[i]][[1]]$Sexe1 == TRUE){
+      sexe = "Féminin"
+    }
+    else {sexe = "autre"}
+    
+    participant.info <- rbind (participant.info, data.frame (timestamp = i,
+                                 tailleEcran = exp.data[[i]][[1]]$tailleEcran,
+                                 gender =  sexe,
+                                 yearOfBirth = exp.data[[i]][[1]]$AnneeNaissance,
+                                 versionOS = exp.data[[i]][[1]]$OsVersion
+
+                                           ))
+
+}
+
+
+
+
+participant.data <- data.frame (timestamp = character (),
                                 motATrouver = character (),
                                 id = integer(),
                                 motClicke = character (),
@@ -88,20 +125,55 @@ participant.info <- data.frame (timestamp = character (),
                                 TextColor = character (),
                                 TR = numeric())
 
-for (n in names (exp.data)) {
-  dat <- exp.data [[n]]
-  participant.info <- rbind (participant.info,
-                             data.frame (timestamp = n,
-                                         tailleEcran = dat$tailleEcran,
-                                         gender0 = dat$Sexe0,
-                                         gender1 = dat$Sexe1,
-                                         gender2 = dat$Sexe2,
-                                         yearOfBirth = dat$AnneeNaissance,
-                                         motATrouver = dat$MotATrouver,
-                                         id = dat$id,
-                                         motClicke = dat$moClicke,
-                                         ClassName = dat$ClassName,
-                                         BackGroundColor = dat$BGC,
-                                         TextColor = dat$TC,
-                                         TR = dat$tempsdeReponse))
+for (t in names(exp.data)) {
+  df = data.frame (timestamp = character (),
+                   motATrouver = character (),
+                   id = integer(),
+                   motClicke = character (),
+                   ClassName = character (),
+                   BackGroundColor = character (),
+                   TextColor = character (),
+                   TR = numeric())
+  for (trial in (2:length(exp.data[[t]]))) {
+    df <- rbind (df,
+                 data.frame(timestamp = t,
+                            motATrouver = exp.data[[t]][[trial]]$motATrouver,
+                            id = exp.data[[t]][[trial]]$id,
+                            motClicke = exp.data[[t]][[trial]]$motClicke,
+                            ClassName = exp.data[[t]][[trial]]$ClassName,
+                            BackGroundColor = exp.data[[t]][[trial]]$BGC,
+                            TextColor = exp.data[[t]][[trial]]$TC,
+                            TR = exp.data[[t]][[trial]]$tempsDeReponse))
+  }
+  participant.data <- rbind (participant.data, df)
 }
+
+
+### **** Consistence des données
+
+table(participant.data [, c ("BackGroundColor", "TextColor")])
+
+table(participant.data [, c ("TextColor", "BackGroundColor", "id")])
+
+table (participant.data [, c ("timestamp")])
+
+
+### **** Statistiques descriptives
+
+boxplot (TR ~ BackGroundColor * TextColor, participant.data)
+
+
+boxplot (TR ~ BackGroundColor * TextColor, participant.data, log = "y")
+
+aggregate (TR ~ BackGroundColor * TextColor, participant.data, mean)
+
+aggregate (TR ~ BackGroundColor * TextColor, participant.data, median)
+
+## faire anova
+
+### ** Ajustement des modèles
+fm.lm.TR <- lm (TR ~ BackGroundColor * TextColor, participant.data)
+summary (fm.lm.TR)
+
+### ** Tableaux d'ANOVA
+anova (fm.lm.TR)
